@@ -1,1 +1,72 @@
+## Date :
+2026-09-02 
+
+## Prompt :
+Voici mon persona : Emmanuel Ricard
+
+• Quel type de poste ou de stage je vise en sortant du programme? Un poste/stage dans le domaine du design graphique
+
+• Qui va probablement regarder mon portfolio? (un·e recruteur·e d'agence, une petite entreprise, un·e client·e potentiel·le...) Des embaucheurs indépendants, recherchant des travailleurs avec mes capacités.
+
+• Qu'est-ce que cette personne cherche à voir en premier? Ce que je suis capable d’accomplir, ce que j’ai déjà accompli, suis-je crédible, etc.
+
+• Quel style visuel (couleurs, typographie, ambiance générale) représenterait le mieux l'identité professionnelle que je veux projeter? Une identité vive, avec des couleurs et typographies modernes et variées.
+
+• Quelle impression je veux que cette personne retienne après avoir visité mon site? Que je suis quelqu’un de polyvalent, avec une expessivité créative grandiose et variée
+
+Voici mon moodboard dans l'image jointe :
+
+Peux-tu me faire un site internet avec cela? en design?
+
+## Outil :
+Figma Make
+
+## Résultat :
+Le code généré est un design de site internet, ce qui me permettra de coder un portfolio avec une idée de base de ce que je veux comme visuel. J'ai discuté avec lui pour améliorer certains aspects de la page pour que ce soit plus en raccord avec ma vision de mon portfolio.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1- Qu'est-ce que j'ai accompli depuis le dernier bloc?
+
+2 - Quelle a été ma principale difficulté et comment je l'ai surmontée?
+
+3 - Qu'est-ce que j'ai appris que je ne savais pas avant?
+
+4 - Quelle est ma prochaine étape concrète?
+
+5 - Est-ce que j'ai utilisé l'IA? Si oui, pour quoi et qu'est-ce que ça m'a appris?
 
