@@ -22,7 +22,7 @@ Peux-tu me faire un site internet avec cela? en design?
 Figma Make
 
 ## Résultat :
-Le code généré est un design de site internet, ce qui me permettra de coder un portfolio avec une idée de base de ce que je veux comme visuel. J'ai discuté avec lui pour améliorer certains aspects de la page pour que ce soit plus en raccord avec ma vision de mon portfolio.
+Le code généré est un design de site internet avec une idée de base de ce que je veux comme visuel. J'ai discuté avec lui pour améliorer certains aspects de la page pour que ce soit plus en raccord avec ma vision de mon portfolio, et générer plusieurs versions pour explorer divers thèmes.
 
 
 
