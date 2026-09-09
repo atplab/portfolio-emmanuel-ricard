@@ -25,34 +25,33 @@ Figma Make
 Le code généré est un design de site internet avec une idée de base de ce que je veux comme visuel. J'ai discuté avec lui pour améliorer certains aspects de la page pour que ce soit plus en raccord avec ma vision de mon portfolio, et générer plusieurs versions pour explorer divers thèmes.
 
 
+## Date :
+2026-09-09 
 
+## Prompt :
+faire que lorsque l'on clique sur un projet, rediriger vers une page de site pour un projet de jeu de réalité virtuelle du portfolio avec cela, en design. Pour un projet, rajouter une section description. rajouter ces éléments : Projet 1
+Nom de votre projet: jeu vidéo
+Mention académique ou personnel: réalisation d'un jeu vidéo de plateforme
+Réalisé dans le cadre du cours: Interactivité Ludique
+Individuel ou en équipe: Individuel
+Votre ou vos rôle(s) dans le projet: Level Designer, Création des niveaux, Concept du jeu
+Logiciels utilisé: Godot
+Catégorie du projet: Conception et programmation d'un jeu vidéo
+Description courte du projet (Résumé en 1 phrase): Créer un projet
+Description du projet (Qu'est-ce que le prof vous a demandé de réaliser?) (2 phrases): Le but du projet était de créer un jeu vidéo contenant 3 niveaux. Le type de jeu était libre.
+Description de votre projet (Qu'est-ce que vous avez fait?) (2 phrases):
+Lien vers la documentation de votre projet (photos, vidéos, extraits sonores, ...) : https://eureka-altima.itch.io/this-is-why-we-jump.
+## Outil :
+Figma Make
+
+## Résultat :
+Le code généré est un design d'une page pour les projets individuels, qui est relié au code principal. J'ai discuté avec lui pour simplifier le code pour le rendre plus agréable à lire,
 
 
 ##
 ##
 ###
 ##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
