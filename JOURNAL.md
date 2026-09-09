@@ -24,6 +24,7 @@ Figma Make
 ## Résultat :
 Le code généré est un design de site internet avec une idée de base de ce que je veux comme visuel. J'ai discuté avec lui pour améliorer certains aspects de la page pour que ce soit plus en raccord avec ma vision de mon portfolio, et générer plusieurs versions pour explorer divers thèmes.
 
+##
 
 ## Date :
 2026-09-09 
