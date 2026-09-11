@@ -26,7 +26,7 @@ Le code généré est un design de site internet avec une idée de base de ce qu
 
 ##
 
-## Date :
+# Date :
 2026-09-09 
 
 ## Prompt :
