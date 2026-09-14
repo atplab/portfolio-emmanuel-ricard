@@ -49,13 +49,11 @@ Figma Make
 Le code généré est un design d'une page pour les projets individuels, qui est relié au code principal. J'ai discuté avec lui pour simplifier le code pour le rendre plus agréable à lire, puis fait des animations pour rendre le tout plus enjoué. Aussi, j'ai séparé chaque section de manière à ce qu'un scroll = nouvelle section.
 
 
-##
-##
-##
-##
 
-
-
+<br>
+<br>
+<br>
+<br>
 
 
 
