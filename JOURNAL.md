@@ -23,9 +23,8 @@ Figma Make
 
 ## Résultat :
 Le code généré est un design de site internet avec une idée de base de ce que je veux comme visuel. J'ai discuté avec lui pour améliorer certains aspects de la page pour que ce soit plus en raccord avec ma vision de mon portfolio, et générer plusieurs versions pour explorer divers thèmes.
-
-##
-
+<br>
+<br>
 # Date :
 2026-09-09 
 
@@ -47,19 +46,21 @@ Figma Make
 
 ## Résultat :
 Le code généré est un design d'une page pour les projets individuels, qui est relié au code principal. J'ai discuté avec lui pour simplifier le code pour le rendre plus agréable à lire, puis fait des animations pour rendre le tout plus enjoué. Aussi, j'ai séparé chaque section de manière à ce qu'un scroll = nouvelle section.
-
-
+<br>
+<br>
+# Date :
+2026-09-11 
+## Prompt :
+lorsque sur projet en mode mobile, remplacer le menu burger par le bouton retour au portfolio. aussi, rendre le bouton retour au portfolio plus long horizontalement, pour que le texte au complet rentre sur la même ligne.
+## Outil :
+Figma Make
+## Résultat :
+La version mobile est désormais plus ergonomique avec un menu burger plus efficace et plaisant visuellement. J'ai aussi demandé d'incrémenter une vidéo Youtube, un carrousel de photos, remplacer des boutons et rendu tout le design ergonomique et agréable à regarder.
 
 <br>
 <br>
 <br>
 <br>
-
-
-
-
-
-
 
 1- Qu'est-ce que j'ai accompli depuis le dernier bloc?
 Depuis le début de la session, j'ai accompli le design de mon portfolio grâce à mon moodboard et Figma Make.
