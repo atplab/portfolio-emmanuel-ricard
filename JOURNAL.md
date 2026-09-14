@@ -68,9 +68,12 @@ Depuis le début de la session, j'ai accompli le design de mon portfolio grâce 
 
 2 - Quelle a été ma principale difficulté et comment je l'ai surmontée?
 Ma principale difficulté était de comprendre le code de l'IA sur Figma Make, mais je l'ai surmonté en simplifiant le code, ce qui m'a permis de mieux comprendre chaque élément servait à quoi, et comment les éléments fonctionnaient.
+
 3 - Qu'est-ce que j'ai appris que je ne savais pas avant?
 J'ai appris à simplifier du code intelligemment, pour mieux comprendre le code utilisé.
+
 4 - Quelle est ma prochaine étape concrète?
 Ma prochaine étape concrète est de créer ma maquette à l'aide de VS Code, pour que mon design de maquette puisse prendre vie.
+
 5 - Est-ce que j'ai utilisé l'IA? Si oui, pour quoi et qu'est-ce que ça m'a appris?
 Oui j'ai utilisé l'IA, il m'a appris de différentes manières de visualiser mon site internet, avec un oeil extérieur. Il m'a permi de rendre mon site ce qu'il sera, car à la base, j'avais une idée différente de design pour mon site.
