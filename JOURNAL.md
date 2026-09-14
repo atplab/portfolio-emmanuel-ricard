@@ -66,7 +66,7 @@ La version mobile est désormais plus ergonomique avec un menu burger plus effic
 
 Depuis le début de la session, j'ai accompli le design de mon portfolio grâce à mon moodboard et Figma Make.
 
-**2 - Quelle a été ma principale difficulté et comment je l'ai surmontée?
+**2 - Quelle a été ma principale difficulté et comment je l'ai surmontée?**
 
 Ma principale difficulté était de comprendre le code de l'IA sur Figma Make, mais je l'ai surmonté en simplifiant le code, ce qui m'a permis de mieux comprendre chaque élément servait à quoi, et comment les éléments fonctionnaient.
 
