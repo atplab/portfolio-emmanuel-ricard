@@ -168,7 +168,22 @@ document.getElementById('page-home').addEventListener('scroll', function() {
 }, { passive:true });
 
 function scrollToId(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior:'smooth' });
+  const target = document.getElementById(id);
+  const container = document.getElementById('page-home');
+
+  console.log('Scrolling to:', id, target, container);
+
+  if (!target) return;
+
+  if (container && container.contains(target)) {
+    container.scrollTo({
+      top: target.offsetTop - 20,
+      behavior: 'smooth'
+    });
+    return;
+  }
+
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ── Project Switcher ──────────────────────────────────────────────────────────
@@ -277,9 +292,11 @@ function openLightbox(images, start) {
   const next = document.createElement('button'); next.className = 'lb-arrow lb-next'; next.textContent = '›';
 
   function show() { img.src = images[i]; }
+
+  img.addEventListener('click', e => e.stopPropagation());
   prev.addEventListener('click', e => { e.stopPropagation(); i = (i - 1 + images.length) % images.length; show(); });
   next.addEventListener('click', e => { e.stopPropagation(); i = (i + 1) % images.length; show(); });
-  lb.addEventListener('click', () => lb.remove());
+  lb.addEventListener('click', e => { if (e.target === lb) lb.remove(); });
 
   lb.append(prev, img, next);
   document.body.appendChild(lb);

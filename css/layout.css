@@ -1,0 +1,4 @@
+/* ── étoiles & Orbes ──────────────────────────────────────────────── */
+#stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.star  { position: absolute; border-radius: 50%; background: #fff; }
+.orb   { position: fixed; border-radius: 50%; filter: blur(80px); opacity: .28; pointer-events: none; z-index: 0; }
