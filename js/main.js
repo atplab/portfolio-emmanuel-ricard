@@ -22,32 +22,8 @@ const TOOLS = [
   { name:"Excel",                 level:"beginner" },
   { name:"Maya",                  level:"beginner" },
 ];
-const PROJECTS = [
-  { id:1, title:"CHEQA", cat:"Print", year:"2025-2026", desc:"Maquette d'application et design de marque.", grad:"linear-gradient(135deg,#10b981,#14b8a6,#22d3ee)", accent:"#7ff0e4", hasPage:false },
-  { id:2, title:"This Is Why We Jump", cat:"Jeu vidéo", year:"2025", desc:"Jeu de plateforme 2D réalisé en solo sous Godot — 3 niveaux, game-feel soigné.", grad:"linear-gradient(135deg,#7c3aed,#a855f7,#ec4899)", accent:"#c4a8ff", hasPage:true },
-  { id:3, title:"Space in Between", cat:"UI/UX", year:"2025", desc:"Conception d'un jeu interactif en réalité virtuelle. ", grad:"linear-gradient(135deg,#4f46e5,#3b82f6,#7c3aed)", accent:"#a8c4ff", hasPage:false },
-  { id:4, title:"Kombucha Vibe", cat:"Packaging", year:"2025", desc:"Conception d'un site internet pour une marque.", grad:"linear-gradient(135deg,#fb923c,#ec4899,#f43f5e)", accent:"#ffb89a", hasPage:false },
-  { id:5, title:"Publicité Proton", cat:"Motion", year:"2023", desc:"Conception de publicités pour réseaux sociaux", grad:"linear-gradient(135deg,#facc15,#fb923c,#ef4444)", accent:"#ffe08a", hasPage:false },
-  { id:6, title:"Éditorial — Revista", cat:"Éditorial", year:"2023", desc:"Direction artistique d'un magazine culturel bilingue. Mise en page audacieuse.", grad:"linear-gradient(135deg,#ec4899,#fb7185,#fdba74)", accent:"#ffb8d4", hasPage:false },
-];
-const PROJECT_DETAIL = {
-  nom:"This Is Why We Jump", cours:"Interactivité Ludique",
-  mention:"Réalisation d'un jeu vidéo de plateforme", equipe:"Individuel",
-  roles:"Level Designer · Création des niveaux · Concept du jeu", logiciels:"Godot",
-  categorie:"Conception et programmation d'un jeu vidéo",
-  resumé:"Conception complète d'un jeu de plateforme en solo, de l'idéation à la livraison de trois niveaux jouables.",
-  descProf:"Le but du projet était de créer un jeu vidéo contenant 3 niveaux. Le type de jeu était libre.",
-  descPerso:"J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
-  lien:"https://eureka-altima.itch.io/this-is-why-we-jump",
-  youtubeId:"QjrEutFNhsg",
-  heroImg:"https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1400&h=700&fit=crop&auto=format",
-  images:[
-    "https://images.unsplash.com/photo-1780193724876-7ca5083d1004?w=900&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1556438064-2d7646166914?w=900&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&h=500&fit=crop&auto=format",
-  ],
-};
+let PROJECTS = [];
+let PROJECT_DETAIL = null;
 
 // ── Stars ─────────────────────────────────────────────────────────────────────
 const starsEl = document.getElementById('stars');
@@ -79,36 +55,68 @@ CATS.forEach(cat => {
 
 // ── Projects ──────────────────────────────────────────────────────────────────
 const grid = document.getElementById('projects-grid');
-PROJECTS.forEach(p => {
-  const card = document.createElement('div');
-  card.className = 'proj-card';
-  card.innerHTML = `
-    <div class="proj-card-bg" style="background:${p.grad}"></div>
-    <div class="proj-card-dark"></div>
-    <div class="proj-card-glow" style="background:radial-gradient(circle,${p.accent}88,transparent)"></div>
-    <div class="proj-card-body">
-      <div class="proj-card-top">
-        <span class="proj-cat" style="background:${p.accent}22;color:${p.accent};border:1px solid ${p.accent}44">${p.cat}</span>
-        <span class="proj-year">${p.year}</span>
-      </div>
-      <div><div class="proj-title">${p.title}</div><div class="proj-desc">${p.desc}</div></div>
-      <div class="proj-link">${p.hasPage ? 'Voir le projet <span class="proj-arrow">→</span>' : 'Bientôt disponible'}</div>
-    </div>`;
-  const glow = card.querySelector('.proj-card-glow');
-  const link = card.querySelector('.proj-link');
-  card.addEventListener('mouseenter', () => {
-    gsap.to(card, { scale:1.03, y:-6, duration:.45, ease:'back.out(1.7)' });
-    gsap.to(glow, { opacity:1, scale:1.5, duration:.5 });
-    gsap.to(link, { color:p.accent, duration:.25 });
+function renderProjects(projects) {
+  grid.innerHTML = '';
+  projects.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'proj-card';
+    card.innerHTML = `
+      <div class="proj-card-bg" style="background:${p.grad}"></div>
+      <div class="proj-card-dark"></div>
+      <div class="proj-card-glow" style="background:radial-gradient(circle,${p.accent}88,transparent)"></div>
+      <div class="proj-card-body">
+        <div class="proj-card-top">
+          <span class="proj-cat" style="background:${p.accent}22;color:${p.accent};border:1px solid ${p.accent}44">${p.cat}</span>
+          <span class="proj-year">${p.year}</span>
+        </div>
+        <div><div class="proj-title">${p.title}</div><div class="proj-desc">${p.desc}</div></div>
+        <div class="proj-link">${p.hasPage ? 'Voir le projet <span class="proj-arrow">→</span>' : 'Bientôt disponible'}</div>
+      </div>`;
+    const glow = card.querySelector('.proj-card-glow');
+    const link = card.querySelector('.proj-link');
+    card.addEventListener('mouseenter', () => {
+      gsap.to(card, { scale:1.03, y:-6, duration:.45, ease:'back.out(1.7)' });
+      gsap.to(glow, { opacity:1, scale:1.5, duration:.5 });
+      gsap.to(link, { color:p.accent, duration:.25 });
+    });
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { scale:1, y:0, duration:.45, ease:'back.out(1.7)' });
+      gsap.to(glow, { opacity:0, scale:.5, duration:.5 });
+      gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.25 });
+    });
+    if(p.hasPage) card.addEventListener('click', openProject);
+    grid.appendChild(card);
   });
-  card.addEventListener('mouseleave', () => {
-    gsap.to(card, { scale:1, y:0, duration:.45, ease:'back.out(1.7)' });
-    gsap.to(glow, { opacity:0, scale:.5, duration:.5 });
-    gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.25 });
+}
+
+function renderProjectSwitcher(projects) {
+  const switcherList = document.getElementById('proj-switcher-list');
+  switcherList.innerHTML = '';
+  projects.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'switcher-card';
+    card.innerHTML = `
+      <div class="switcher-thumb"><div class="switcher-thumb-bg" style="background:${p.grad}"></div><div class="switcher-thumb-overlay"></div></div>
+      <div class="switcher-info"><div class="switcher-cat" style="color:${p.accent}">${p.cat}</div><div class="switcher-title">${p.title}</div></div>
+      <span class="switcher-badge" style="${p.hasPage ? '' : 'opacity:.4'}">${p.hasPage ? 'Voir →' : 'Bientôt'}</span>`;
+    if(p.hasPage) card.addEventListener('click', () => { switcherMenu.classList.remove('open'); openProject(); });
+    switcherList.appendChild(card);
   });
-  if(p.hasPage) card.addEventListener('click', openProject);
-  grid.appendChild(card);
-});
+}
+
+const projectsDataPromise = window.projectsDataPromise || Promise.reject(new Error('projectsDataPromise is not available'));
+
+projectsDataPromise
+  .then(data => {
+    PROJECTS = data.projects || [];
+    PROJECT_DETAIL = data.featuredProject || null;
+    renderProjects(PROJECTS);
+    renderProjectSwitcher(PROJECTS);
+  })
+  .catch(error => {
+    console.error(error);
+    grid.innerHTML = '<p class="body-text">Impossible de charger les projets.</p>';
+  });
 
 // ── Bubbles ───────────────────────────────────────────────────────────────────
 function bindBubbles(root) {
@@ -189,17 +197,6 @@ function scrollToId(id) {
 // ── Project Switcher ──────────────────────────────────────────────────────────
 const switcherMenu = document.getElementById('proj-switcher-menu');
 const switcherBtn  = document.getElementById('proj-switcher-btn');
-
-PROJECTS.forEach(p => {
-  const card = document.createElement('div');
-  card.className = 'switcher-card';
-  card.innerHTML = `
-    <div class="switcher-thumb"><div class="switcher-thumb-bg" style="background:${p.grad}"></div><div class="switcher-thumb-overlay"></div></div>
-    <div class="switcher-info"><div class="switcher-cat" style="color:${p.accent}">${p.cat}</div><div class="switcher-title">${p.title}</div></div>
-    <span class="switcher-badge" style="${p.hasPage ? '' : 'opacity:.4'}">${p.hasPage ? 'Voir →' : 'Bientôt'}</span>`;
-  if(p.hasPage) card.addEventListener('click', () => { switcherMenu.classList.remove('open'); openProject(); });
-  document.getElementById('proj-switcher-list').appendChild(card);
-});
 
 switcherBtn.addEventListener('click', e => { e.stopPropagation(); switcherMenu.classList.toggle('open'); });
 document.addEventListener('click', () => switcherMenu.classList.remove('open'));
@@ -307,6 +304,7 @@ function openLightbox(images, start) {
 // ── Fill project ──────────────────────────────────────────────────────────────
 function fillProject() {
   const p = PROJECT_DETAIL;
+  if (!p) return;
   document.getElementById('ph-img').src           = p.heroImg;
   document.getElementById('ph-cat').textContent   = p.categorie;
   document.getElementById('ph-label').textContent = `✦ Projet — ${p.cours}`;

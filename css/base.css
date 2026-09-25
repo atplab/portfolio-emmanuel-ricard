@@ -64,7 +64,7 @@ body, button, a {
   min-height: 100vh; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   padding: 64px 24px 128px; text-align: center; position: relative;
-  /*scroll-snap-align: start; */
+    scroll-snap-align: start;
 }
 #hero::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -112,8 +112,8 @@ body, button, a {
   text-decoration: none; display: inline-block;
 }
 
-* ── projets ──────────────────────────────────────────────────────── */
-#work { padding: 80px 24px; min-height: 100vh; /*scroll-snap-align: start; */ }
+/* ── projets ──────────────────────────────────────────────────────── */
+#work { padding: 80px 24px; min-height: 100vh; scroll-snap-align: start; }
 
 .sec-header { text-align: center; margin-bottom: 64px; }
 .sec-header h2 { font-family: var(--fd); font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; color: #fff; }
@@ -123,7 +123,7 @@ body, button, a {
 @media(min-width:1024px){ .projects-grid { grid-template-columns: repeat(3,1fr); } }
 
 /* ── À propos ─────────────────────────────────────────────────────── */
-#about { padding: 112px 24px; min-height: 100vh; display: flex; align-items: center; /*scroll-snap-align: start; */ }
+#about { padding: 112px 24px; min-height: 100vh; display: flex; align-items: center; scroll-snap-align: start; }
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -198,7 +198,7 @@ body, button, a {
 
 
 /* ── compétences / outils ────────────────────────────────────────────── */
-#skills { padding: 80px 24px; min-height: 100vh; display: flex; align-items: center; /*scroll-snap-align: start; */ }
+#skills { padding: 80px 24px; min-height: 100vh; display: flex; align-items: center; scroll-snap-align: start; }
 .tools-box {
   max-width: 960px; margin: 0 auto; position: relative; overflow: hidden;
   background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
@@ -240,7 +240,7 @@ body, button, a {
 
 
 /* ── Contact ───────────────────────────────────────────────────── */
-#contact { padding: 112px 24px 40px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; /*scroll-snap-align: start; */ }
+#contact { padding: 112px 24px 40px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
 .contact-card {
   max-width: 720px; margin: 0 auto; border-radius: 2.5rem;
   padding: 80px 48px; position: relative; overflow: hidden; text-align: center;

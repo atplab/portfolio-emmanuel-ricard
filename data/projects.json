@@ -1,0 +1,85 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "CHEQA",
+      "cat": "Print",
+      "year": "2025-2026",
+      "desc": "Maquette d'application et design de marque.",
+      "grad": "linear-gradient(135deg,#10b981,#14b8a6,#22d3ee)",
+      "accent": "#7ff0e4",
+      "hasPage": false
+    },
+    {
+      "id": 2,
+      "title": "This Is Why We Jump",
+      "cat": "Jeu vidéo",
+      "year": "2025",
+      "desc": "Jeu de plateforme 2D réalisé en solo sous Godot — 3 niveaux, game-feel soigné.",
+      "grad": "linear-gradient(135deg,#7c3aed,#a855f7,#ec4899)",
+      "accent": "#c4a8ff",
+      "hasPage": true
+    },
+    {
+      "id": 3,
+      "title": "Space in Between",
+      "cat": "UI/UX",
+      "year": "2025",
+      "desc": "Conception d'un jeu interactif en réalité virtuelle.",
+      "grad": "linear-gradient(135deg,#4f46e5,#3b82f6,#7c3aed)",
+      "accent": "#a8c4ff",
+      "hasPage": false
+    },
+    {
+      "id": 4,
+      "title": "Kombucha Vibe",
+      "cat": "Packaging",
+      "year": "2025",
+      "desc": "Conception d'un site internet pour une marque.",
+      "grad": "linear-gradient(135deg,#fb923c,#ec4899,#f43f5e)",
+      "accent": "#ffb89a",
+      "hasPage": false
+    },
+    {
+      "id": 5,
+      "title": "Publicité Proton",
+      "cat": "Motion",
+      "year": "2023",
+      "desc": "Conception de publicités pour réseaux sociaux",
+      "grad": "linear-gradient(135deg,#facc15,#fb923c,#ef4444)",
+      "accent": "#ffe08a",
+      "hasPage": false
+    },
+    {
+      "id": 6,
+      "title": "Éditorial — Revista",
+      "cat": "Éditorial",
+      "year": "2023",
+      "desc": "Direction artistique d'un magazine culturel bilingue. Mise en page audacieuse.",
+      "grad": "linear-gradient(135deg,#ec4899,#fb7185,#fdba74)",
+      "accent": "#ffb8d4",
+      "hasPage": false
+    }
+  ],
+  "featuredProject": {
+    "nom": "This Is Why We Jump",
+    "cours": "Interactivité Ludique",
+    "mention": "Réalisation d'un jeu vidéo de plateforme",
+    "equipe": "Individuel",
+    "roles": "Level Designer · Création des niveaux · Concept du jeu",
+    "logiciels": "Godot",
+    "categorie": "Conception et programmation d'un jeu vidéo",
+    "resumé": "Conception complète d'un jeu de plateforme en solo, de l'idéation à la livraison de trois niveaux jouables.",
+    "descProf": "Le but du projet était de créer un jeu vidéo contenant 3 niveaux. Le type de jeu était libre.",
+    "descPerso": "J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
+    "lien": "https://eureka-altima.itch.io/this-is-why-we-jump",
+    "youtubeId": "QjrEutFNhsg",
+    "heroImg": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1400&h=700&fit=crop&auto=format",
+    "images": [
+      "https://images.unsplash.com/photo-1780193724876-7ca5083d1004?w=900&h=500&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1556438064-2d7646166914?w=900&h=500&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&h=500&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&h=500&fit=crop&auto=format"
+    ]
+  }
+}
