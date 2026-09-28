@@ -284,18 +284,23 @@ function initCarousel(images) {
 function openLightbox(images, start) {
   let i = start;
   const lb  = document.createElement('div'); lb.id = 'lightbox';
+  const media = document.createElement('div'); media.className = 'lb-media';
   const img = document.createElement('img');
+  const close = document.createElement('button'); close.className = 'lb-close'; close.type = 'button'; close.setAttribute('aria-label', 'Fermer le grand écran'); close.textContent = '×';
   const prev = document.createElement('button'); prev.className = 'lb-arrow lb-prev'; prev.textContent = '‹';
   const next = document.createElement('button'); next.className = 'lb-arrow lb-next'; next.textContent = '›';
 
   function show() { img.src = images[i]; }
+  function closeLightbox() { lb.remove(); }
 
   img.addEventListener('click', e => e.stopPropagation());
+  close.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
   prev.addEventListener('click', e => { e.stopPropagation(); i = (i - 1 + images.length) % images.length; show(); });
   next.addEventListener('click', e => { e.stopPropagation(); i = (i + 1) % images.length; show(); });
-  lb.addEventListener('click', e => { if (e.target === lb) lb.remove(); });
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
 
-  lb.append(prev, img, next);
+  media.append(img, close);
+  lb.append(prev, media, next);
   document.body.appendChild(lb);
   show();
   requestAnimationFrame(() => lb.classList.add('open'));
