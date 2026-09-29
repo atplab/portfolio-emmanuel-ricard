@@ -24,6 +24,8 @@ const TOOLS = [
 ];
 let PROJECTS = [];
 let PROJECT_DETAIL = null;
+let PROJECT_DETAILS = {};
+let FEATURED_PROJECT_DETAIL = null;
 
 // ── Stars ─────────────────────────────────────────────────────────────────────
 const starsEl = document.getElementById('stars');
@@ -84,7 +86,7 @@ function renderProjects(projects) {
       gsap.to(glow, { opacity:0, scale:.5, duration:.5 });
       gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.25 });
     });
-    if(p.hasPage) card.addEventListener('click', openProject);
+    if(p.hasPage) card.addEventListener('click', () => openProject(p.id));
     grid.appendChild(card);
   });
 }
@@ -99,7 +101,7 @@ function renderProjectSwitcher(projects) {
       <div class="switcher-thumb"><div class="switcher-thumb-bg" style="background:${p.grad}"></div><div class="switcher-thumb-overlay"></div></div>
       <div class="switcher-info"><div class="switcher-cat" style="color:${p.accent}">${p.cat}</div><div class="switcher-title">${p.title}</div></div>
       <span class="switcher-badge" style="${p.hasPage ? '' : 'opacity:.4'}">${p.hasPage ? 'Voir →' : 'Bientôt'}</span>`;
-    if(p.hasPage) card.addEventListener('click', () => { switcherMenu.classList.remove('open'); openProject(); });
+    if(p.hasPage) card.addEventListener('click', () => { switcherMenu.classList.remove('open'); openProject(p.id); });
     switcherList.appendChild(card);
   });
 }
@@ -109,7 +111,9 @@ const projectsDataPromise = window.projectsDataPromise || Promise.reject(new Err
 projectsDataPromise
   .then(data => {
     PROJECTS = data.projects || [];
-    PROJECT_DETAIL = data.featuredProject || null;
+    FEATURED_PROJECT_DETAIL = data.featuredProject || null;
+    PROJECT_DETAIL = FEATURED_PROJECT_DETAIL;
+    PROJECT_DETAILS = data.projectDetails || {};
     renderProjects(PROJECTS);
     renderProjectSwitcher(PROJECTS);
   })
@@ -208,16 +212,18 @@ const homeEl    = document.getElementById('page-home');
 const projEl    = document.getElementById('page-project');
 const navEl     = document.getElementById('bottom-nav');
 const projNavEl = document.getElementById('proj-nav');
+const projTopBack = document.getElementById('proj-top-back');
 
-function openProject() {
+function openProject(projectId) {
   if(busy) return; busy = true;
+  PROJECT_DETAIL = PROJECT_DETAILS[String(projectId)] || (projectId === 1 ? FEATURED_PROJECT_DETAIL : null);
   fillProject();
   gsap.timeline({ onComplete: () => { busy=false; bindBubbles(projEl); } })
     .to([homeEl, navEl], { opacity:0, y:-18, duration:.22, ease:'power2.in' })
     .call(() => {
       homeEl.classList.add('hidden'); navEl.style.display = 'none';
       burgerBtn.style.display = 'none'; burgerMenu.classList.remove('open'); burgerBtn.classList.remove('open');
-      projEl.classList.remove('hidden'); projEl.scrollTop = 0; projNavEl.style.display = 'flex';
+      projEl.classList.remove('hidden'); projEl.scrollTop = 0; projNavEl.style.display = 'flex'; projTopBack.style.display = 'flex';
       gsap.set(projEl, { opacity:0, y:28 }); gsap.set(projNavEl, { opacity:0, y:20 });
     })
     .to(projEl,    { opacity:1, y:0, duration:.42, ease:'power3.out' })
@@ -230,6 +236,7 @@ function goHome() {
     .to([projEl, projNavEl], { opacity:0, y:-18, duration:.22, ease:'power2.in' })
     .call(() => {
       projEl.classList.add('hidden'); projNavEl.style.display = 'none';
+      projTopBack.style.display = 'none';
       homeEl.classList.remove('hidden'); navEl.style.display = 'flex'; burgerBtn.style.display = '';
       gsap.set([homeEl, navEl], { opacity:0, y:28 });
     })
@@ -238,15 +245,18 @@ function goHome() {
 }
 
 document.getElementById('proj-nav-back').addEventListener('click', goHome);
+projTopBack.addEventListener('click', goHome);
 
 // ── Carousel ──────────────────────────────────────────────────────────────────
-let carouselTimer = null;
+const carouselTimers = {};
 
-function initCarousel(images) {
-  const wrap  = document.getElementById('ph-carousel');
-  const track = document.getElementById('carousel-track');
-  const dots  = document.getElementById('carousel-dots');
-  clearInterval(carouselTimer);
+function initCarousel(images, ids = {}) {
+  const key = ids.wrap || 'ph-carousel';
+  const showCaptions = ids.captions === true;
+  const wrap  = document.getElementById(key);
+  const track = document.getElementById(ids.track || 'carousel-track');
+  const dots  = document.getElementById(ids.dots || 'carousel-dots');
+  clearInterval(carouselTimers[key]);
   track.innerHTML = dots.innerHTML = '';
   if(!images?.length) { wrap.style.display = 'none'; return; }
   wrap.style.display = 'block';
@@ -255,8 +265,12 @@ function initCarousel(images) {
   images.forEach((src, i) => {
     const slide = document.createElement('div');
     slide.className = 'carousel-slide';
-    slide.innerHTML = `<img src="${src}" alt=""/><div class="carousel-slide-overlay"></div>`;
-    slide.querySelector('img').addEventListener('click', () => openLightbox(images, i));
+    const filename = decodeURIComponent(src.split('/').pop()).replace(/\.[^.]+$/, '');
+    const caption = showCaptions ? `<p class="carousel-caption">${filename}</p>` : '';
+    slide.innerHTML = `<img src="${src}" alt="${showCaptions ? filename : ''}"/><div class="carousel-slide-overlay"></div>${caption}`;
+    const image = slide.querySelector('img');
+    image.addEventListener('click', () => openLightbox(images, i));
+    image.addEventListener('load', () => updateRatio(i));
     track.appendChild(slide);
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -264,19 +278,28 @@ function initCarousel(images) {
     dots.appendChild(dot);
   });
 
+  function updateRatio(i) {
+    if (i !== idx) return;
+    const image = track.querySelectorAll('img')[i];
+    if (image?.naturalWidth && image?.naturalHeight) {
+      wrap.style.setProperty('--gallery-ratio', `${image.naturalWidth} / ${image.naturalHeight}`);
+    }
+  }
+
   function goTo(i) {
     idx = (i + images.length) % images.length;
+    updateRatio(idx);
     track.style.transform = `translateX(-${idx * 100}%)`;
     dots.querySelectorAll('.carousel-dot').forEach((d, j) => d.classList.toggle('active', j === idx));
   }
 
   function resetTimer() {
-    clearInterval(carouselTimer);
-    carouselTimer = setInterval(() => goTo(idx + 1), 4000);
+    clearInterval(carouselTimers[key]);
+    carouselTimers[key] = setInterval(() => goTo(idx + 1), 4000);
   }
 
-  document.getElementById('carousel-prev').onclick = () => { goTo(idx - 1); resetTimer(); };
-  document.getElementById('carousel-next').onclick = () => { goTo(idx + 1); resetTimer(); };
+  document.getElementById(ids.prev || 'carousel-prev').onclick = () => { goTo(idx - 1); resetTimer(); };
+  document.getElementById(ids.next || 'carousel-next').onclick = () => { goTo(idx + 1); resetTimer(); };
   resetTimer();
 }
 
@@ -319,6 +342,13 @@ function fillProject() {
   document.getElementById('ph-prof').innerHTML    = `<p>${p.descProf}</p>`;
   document.getElementById('ph-perso').innerHTML   = `<p>${p.descPerso}</p>`;
 
+  const cta = document.getElementById('ph-cta');
+  cta.style.display = p.lien ? '' : 'none';
+  if (p.lien) {
+    document.getElementById('ph-cta-title').textContent = p.ctaTitle || 'Voir le projet';
+    document.getElementById('ph-cta-sub').textContent = p.ctaSub || 'Documentation du projet';
+  }
+
   const videoWrap = document.getElementById('ph-video-wrap');
   document.getElementById('ph-video').src = p.youtubeId ? `https://www.youtube.com/embed/${p.youtubeId}` : '';
   videoWrap.style.display = p.youtubeId ? 'block' : 'none';
@@ -326,13 +356,25 @@ function fillProject() {
   document.getElementById('ph-meta').innerHTML = [
     {label:"Mention",   value:p.mention},
     {label:"Cours",     value:p.cours},
-    {label:"Format",    value:p.equipe},
+    {label:"Équipe",    value:p.equipe},
     {label:"Rôle(s)",   value:p.roles},
     {label:"Logiciel(s)",  value:p.logiciels},
     {label:"Catégorie", value:p.categorie},
   ].map(m => `<div class="meta-card bubble"><div class="meta-lbl">${m.label}</div><div class="meta-val">${m.value}</div></div>`).join('');
 
-  initCarousel(p.images);
+  document.getElementById('ph-carousel').classList.toggle('cheqa-gallery', p.nom === 'CHEQA');
+  document.getElementById('ph-carousel').classList.toggle('kombucha-gallery', p.nom === 'Kombucha Vibe');
+  document.getElementById('ph-carousel').classList.toggle('proton-gallery', p.nom === 'Publicité Proton');
+  document.getElementById('ph-carousel-archive').classList.toggle('cheqa-gallery', p.nom === 'CHEQA');
+  document.getElementById('ph-galleries').classList.toggle('wide-gallery', ['Kombucha Vibe', 'Publicité Proton'].includes(p.nom));
+  initCarousel(p.images, { captions: p.nom === 'Publicité Proton' });
+  initCarousel(p.imagesArchive, {
+    wrap: 'ph-carousel-archive',
+    track: 'carousel-archive-track',
+    dots: 'carousel-archive-dots',
+    prev: 'carousel-archive-prev',
+    next: 'carousel-archive-next',
+  });
 }
 
 // ── Entrance animations ───────────────────────────────────────────────────────

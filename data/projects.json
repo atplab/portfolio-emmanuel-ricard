@@ -3,12 +3,12 @@
     {
       "id": 1,
       "title": "CHEQA",
-      "cat": "Print",
+      "cat": "Design numérique",
       "year": "2025-2026",
       "desc": "Maquette d'application et design de marque.",
       "grad": "linear-gradient(135deg,#10b981,#14b8a6,#22d3ee)",
       "accent": "#7ff0e4",
-      "hasPage": false
+      "hasPage": true
     },
     {
       "id": 2,
@@ -33,22 +33,22 @@
     {
       "id": 4,
       "title": "Kombucha Vibe",
-      "cat": "Packaging",
+      "cat": "Web design",
       "year": "2025",
-      "desc": "Conception d'un site internet pour une marque.",
+      "desc": "Conception et design d'un site internet pour une entreprise de Kombucha.",
       "grad": "linear-gradient(135deg,#fb923c,#ec4899,#f43f5e)",
       "accent": "#ffb89a",
-      "hasPage": false
+      "hasPage": true
     },
     {
       "id": 5,
       "title": "Publicité Proton",
-      "cat": "Motion",
+      "cat": "Publicité numérique",
       "year": "2023",
-      "desc": "Conception de publicités pour réseaux sociaux",
+      "desc": "Création de publicités numériques pour les réseaux sociaux.",
       "grad": "linear-gradient(135deg,#facc15,#fb923c,#ef4444)",
       "accent": "#ffe08a",
-      "hasPage": false
+      "hasPage": true
     },
     {
       "id": 6,
@@ -62,24 +62,103 @@
     }
   ],
   "featuredProject": {
-    "nom": "This Is Why We Jump",
-    "cours": "Interactivité Ludique",
-    "mention": "Réalisation d'un jeu vidéo de plateforme",
-    "equipe": "Individuel",
-    "roles": "Level Designer · Création des niveaux · Concept du jeu",
-    "logiciels": "Godot",
-    "categorie": "Conception et programmation d'un jeu vidéo",
-    "resumé": "Conception complète d'un jeu de plateforme en solo, de l'idéation à la livraison de trois niveaux jouables.",
-    "descProf": "Le but du projet était de créer un jeu vidéo contenant 3 niveaux. Le type de jeu était libre.",
-    "descPerso": "J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
-    "lien": "https://eureka-altima.itch.io/this-is-why-we-jump",
-    "youtubeId": "QjrEutFNhsg",
-    "heroImg": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1400&h=700&fit=crop&auto=format",
+    "nom": "CHEQA",
+    "cours": "Projet d'équipe",
+    "mention": "Réalisation d'une maquette d'application, image de marque",
+    "equipe": "Louise, Élodie, Alonso, Léo, Marie",
+    "roles": "Réalisation de la maquette · Design · Création de contenu marketing en ligne",
+    "logiciels": "Figma Make · Canva · PowerDirector · DaVinci Resolve",
+    "categorie": "Design d'une maquette numérique d'application",
+    "resumé": "Créer, designer et faire la promotion d'une application de réseau social.",
+    "descProf": "Ce projet est une application de réseau social avec comme objectif de partager du contenu sourcé.",
+    "descPerso": "J'ai créé, designé et composé la maquette de l'application, la position des éléments dans l'application, le contenu et l'affichage visuel de l'application. J'ai aussi travaillé sur la typographie, les couleurs de la marque, la création du logo et le contenu de promotion sur les réseaux sociaux.",
+    "lien": "",
+    "youtubeId": "",
+    "heroImg": "./assets/Cheqa/page_connexion.png",
     "images": [
-      "https://images.unsplash.com/photo-1780193724876-7ca5083d1004?w=900&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1556438064-2d7646166914?w=900&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&h=500&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&h=500&fit=crop&auto=format"
+      "./assets/Cheqa/page_connexion.png",
+      "./assets/Cheqa/explorer_nouveau.png",
+      "./assets/Cheqa/mode_créateur.png",
+      "./assets/Cheqa/publier_vidéo.png",
+      "./assets/Cheqa/conversation_nouveau.png",
+      "./assets/Cheqa/messages_nouveau.png",
+      "./assets/Cheqa/paramètres_nouveau.png"
+    ],
+    "imagesArchive": [
+      "./assets/Cheqa/conversation_ancien.png",
+      "./assets/Cheqa/explorer_ancien.png",
+      "./assets/Cheqa/messages_ancien.png",
+      "./assets/Cheqa/paramètres_ancien.png",
+      "./assets/Cheqa/react_ancien.png"
     ]
+  },
+  "projectDetails": {
+    "2": {
+      "nom": "This Is Why We Jump",
+      "cours": "Interactivité Ludique",
+      "mention": "Réalisation d'un jeu vidéo de plateforme",
+      "equipe": "Individuel",
+      "roles": "Level Designer · Création des niveaux · Concept du jeu",
+      "logiciels": "Godot",
+      "categorie": "Conception et programmation d'un jeu vidéo",
+      "resumé": "Conception complète d'un jeu de plateforme en solo, de l'idéation à la livraison de trois niveaux jouables.",
+      "descProf": "Le but du projet était de créer un jeu vidéo contenant 3 niveaux. Le type de jeu était libre.",
+      "descPerso": "J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
+      "lien": "https://eureka-altima.itch.io/this-is-why-we-jump",
+      "youtubeId": "QjrEutFNhsg",
+      "heroImg": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1400&h=700&fit=crop&auto=format",
+      "images": [
+        "https://images.unsplash.com/photo-1780193724876-7ca5083d1004?w=900&h=500&fit=crop&auto=format",
+        "https://images.unsplash.com/photo-1556438064-2d7646166914?w=900&h=500&fit=crop&auto=format",
+        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&h=500&fit=crop&auto=format",
+        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&h=500&fit=crop&auto=format"
+      ]
+    },
+    "4": {
+      "nom": "Kombucha Vibe",
+      "cours": "Web 4",
+      "mention": "Réalisation d'un site internet",
+      "equipe": "Individuel",
+      "roles": "Création d'un site internet pour une entreprise",
+      "logiciels": "WordPress · Gemini pour la génération d'images",
+      "categorie": "Conception et design d'un site internet",
+      "resumé": "Créer un site internet pour une entreprise de Kombucha.",
+      "descProf": "Ce projet est un site internet pour promouvoir une entreprise, avec un système de vente de produits. Il devait y avoir une boutique, de la traduction dans plusieurs langues, des articles et l'utilisation d'extensions de WordPress.",
+      "descPerso": "J'ai fait des animations fluides, des boutons interactifs, une page dynamique et visuellement agréable à regarder. Tout est facile à comprendre, avec des catégories qui se suivent graphiquement.",
+      "lien": "",
+      "youtubeId": "",
+      "heroImg": "./assets/Kombucha Vibe/header.png",
+      "images": [
+        "./assets/Kombucha Vibe/header.png",
+        "./assets/Kombucha Vibe/boutique.png",
+        "./assets/Kombucha Vibe/en_savoir_plus.png",
+        "./assets/Kombucha Vibe/rejoignez_nous.png",
+        "./assets/Kombucha Vibe/section_fruits.png"
+      ]
+    },
+    "5": {
+      "nom": "Publicité Proton",
+      "cours": "Design Graphique",
+      "mention": "Créer une publicité pour une compagnie",
+      "equipe": "Individuel",
+      "roles": "Design d'une maquette",
+      "logiciels": "Figma",
+      "categorie": "Création de publicités numériques",
+      "resumé": "Créer des publicités pour une compagnie pour des réseaux sociaux.",
+      "descProf": "Ce projet est une publicité en ligne avec comme objectif de promouvoir une compagnie avec différentes annonces, comme sur Facebook, en publication Instagram, en story Instagram ou sur des sites internet.",
+      "descPerso": "J'ai promu la compagnie Proton, en designant des publications et en trouvant des couleurs dynamiques allant avec le style de la marque. J'ai gardé les valeurs transmises par la marque, tout en envoyant un message impactant et direct au consommateur de la publicité.",
+      "lien": "",
+      "youtubeId": "",
+      "heroImg": "./assets/Publicité Proton/Publicité.png",
+      "images": [
+        "./assets/Publicité Proton/Publicité.png",
+        "./assets/Publicité Proton/Facebook - publicité dans le fil de publications (feed).png",
+        "./assets/Publicité Proton/Instagram publicité dans le fil de publications (feed).png",
+        "./assets/Publicité Proton/Story.png",
+        "./assets/Publicité Proton/Site web plein-écran 1920x1080.png",
+        "./assets/Publicité Proton/Planche d'inspiration.png",
+        "./assets/Publicité Proton/planche de style.png"
+      ]
+    }
   }
 }

@@ -128,25 +128,39 @@
       </div>
     </div>
 
-    <div id="ph-carousel" class="carousel" style="display:none">
-      <p class="label" style="color:var(--mint);margin-bottom:20px">✦ Galerie</p>
-      <div class="carousel-track-wrap">
-        <div class="carousel-track" id="carousel-track"></div>
-        <button class="carousel-arrow carousel-prev" id="carousel-prev">‹</button>
-        <button class="carousel-arrow carousel-next" id="carousel-next">›</button>
+    <div id="ph-galleries">
+      <div id="ph-carousel" class="carousel" style="display:none">
+        <p class="label" style="color:var(--mint);margin-bottom:20px">✦ Galerie</p>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="carousel-track"></div>
+          <button class="carousel-arrow carousel-prev" id="carousel-prev">‹</button>
+          <button class="carousel-arrow carousel-next" id="carousel-next">›</button>
+        </div>
+        <div class="carousel-dots" id="carousel-dots"></div>
       </div>
-      <div class="carousel-dots" id="carousel-dots"></div>
+
+      <div id="ph-carousel-archive" class="carousel" style="display:none">
+        <p class="label" style="color:var(--peach);margin-bottom:20px">✦ Anciennes interfaces</p>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="carousel-archive-track"></div>
+          <button class="carousel-arrow carousel-prev" id="carousel-archive-prev">‹</button>
+          <button class="carousel-arrow carousel-next" id="carousel-archive-next">›</button>
+        </div>
+        <div class="carousel-dots" id="carousel-archive-dots"></div>
+      </div>
     </div>
 
-    <div class="cta-section">
-      <h2 class="cta-title">Expériencer le jeu</h2>
-      <p class="cta-sub">Disponible sur itch.io — navigateur</p>
+    <div id="ph-cta" class="cta-section">
+      <h2 id="ph-cta-title" class="cta-title">Expériencer le jeu</h2>
+      <p id="ph-cta-sub" class="cta-sub">Disponible sur itch.io — navigateur</p>
       <a id="ph-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-itch bubble">
         <span>Voir sur itch.io</span><span>↗</span>
       </a>
     </div>
   </div>
 </div>
+
+<button id="proj-top-back" class="nav-btn active proj-top-back" type="button">← Retour</button>
 
 <!-- Burger (mobile) -->
 <button id="burger-btn" aria-label="Menu">
