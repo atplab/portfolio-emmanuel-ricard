@@ -303,10 +303,17 @@ body, button, a {
   padding: 0 24px; max-width: 960px; margin: 0 auto;
 }
 .proj-hero-label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--lavender); margin-bottom: 12px; }
+.proj-hero-headline {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
 .proj-hero-title {
   font-family: var(--fd); font-weight: 700; font-size: clamp(2.5rem,7vw,5rem); line-height: 1.05;
   background: linear-gradient(135deg,#fff 0%,#c4a8ff 50%,#ffb89a 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin: 0;
+}
+.proj-hero-date {
+  display: none;
 }
 .proj-content { max-width: 896px; margin: 0 auto; padding: 0 24px 128px; position: relative; z-index: 2; }
 .resumé-block {

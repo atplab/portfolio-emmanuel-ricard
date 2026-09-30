@@ -258,11 +258,19 @@ function initCarousel(images, ids = {}) {
   const wrap  = document.getElementById(key);
   const track = document.getElementById(ids.track || 'carousel-track');
   const dots  = document.getElementById(ids.dots || 'carousel-dots');
+  const previewContainer = document.getElementById(ids.preview || (key === 'ph-carousel-archive' ? 'gallery-archive-preview' : 'gallery-preview'));
   clearInterval(carouselTimers[key]);
   track.innerHTML = dots.innerHTML = '';
   if(!images?.length) { wrap.style.display = 'none'; return; }
   wrap.style.display = 'block';
   let idx = 0;
+
+  function syncPreviewHighlight() {
+    if (!previewContainer) return;
+    previewContainer.querySelectorAll('.gallery-preview-item').forEach((item, i) => {
+      item.classList.toggle('active', i === idx);
+    });
+  }
 
   images.forEach((src, i) => {
     const slide = document.createElement('div');
@@ -293,6 +301,7 @@ function initCarousel(images, ids = {}) {
     updateRatio(idx);
     track.style.transform = `translateX(-${idx * 100}%)`;
     dots.querySelectorAll('.carousel-dot').forEach((d, j) => d.classList.toggle('active', j === idx));
+    syncPreviewHighlight();
   }
 
   function resetTimer() {
@@ -305,8 +314,33 @@ function initCarousel(images, ids = {}) {
   resetTimer();
 }
 
+function buildGalleryPreview(images, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  if (!images?.length) {
+    container.style.display = 'none';
+    return;
+  }
+  container.style.display = 'flex';
+
+  images.forEach((src, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gallery-preview-item';
+    btn.dataset.index = String(index);
+    btn.setAttribute('aria-label', `Voir l'image ${index + 1}`);
+    btn.innerHTML = `<img src="${src}" alt="Aperçu ${index + 1}" />`;
+    btn.addEventListener('click', () => openLightbox(images, index));
+    container.appendChild(btn);
+  });
+
+  const firstPreview = container.querySelector('.gallery-preview-item');
+  if (firstPreview) firstPreview.classList.add('active');
+}
+
 // ── Lightbox ──────────────────────────────────────────────────────────────────
-function openLightbox(images, start) {
+function openLightbox(images, start = 0) {
   let i = start;
   const lb  = document.createElement('div'); lb.id = 'lightbox';
   const media = document.createElement('div'); media.className = 'lb-media';
@@ -337,9 +371,16 @@ function fillProject() {
   if (!p) return;
   document.querySelector('.proj-hero').classList.toggle('cheqa-hero', p.nom === 'CHEQA');
   document.getElementById('ph-img').src           = p.heroImg;
-  document.getElementById('ph-cat').textContent   = p.categorie;
-  document.getElementById('ph-label').textContent = `✦ Projet — ${p.cours}`;
+  const catEl = document.getElementById('ph-cat');
+  catEl.textContent = '';
+  catEl.style.display = 'none';
+  const projectDate = p.date || p.year || '';
+  const labelEl = document.getElementById('ph-label');
+  labelEl.textContent = projectDate ? `✦ Projet — ${projectDate}` : '✦ Projet';
   document.getElementById('ph-title').textContent = p.nom;
+  const dateEl = document.getElementById('ph-date');
+  dateEl.textContent = '';
+  dateEl.style.display = 'none';
   document.getElementById('ph-resumé').innerHTML  = `<span class="resumé-label">Résumé — </span>${p.resumé}`;
   document.getElementById('ph-link').href         = p.lien;
   document.getElementById('ph-prof').innerHTML    = `<p>${p.descProf}</p>`;
@@ -369,7 +410,7 @@ function fillProject() {
     {label:"Équipe",    value:p.equipe},
     {label:"Rôle(s)",   value:p.roles},
     {label:"Logiciel(s)",  value:p.logiciels},
-    {label:"Catégorie", value:p.categorie},
+    {label:"Type", value:p.categorie},
   ].map(m => `<div class="meta-card bubble"><div class="meta-lbl">${m.label}</div><div class="meta-val">${m.value}</div></div>`).join('');
 
   document.getElementById('ph-carousel').classList.toggle('cheqa-gallery', p.nom === 'CHEQA');
@@ -378,14 +419,20 @@ function fillProject() {
   document.getElementById('ph-carousel').classList.toggle('proton-gallery', p.nom === 'Publicité Proton');
   document.getElementById('ph-carousel-archive').classList.toggle('cheqa-gallery', p.nom === 'CHEQA');
   document.getElementById('ph-galleries').classList.toggle('wide-gallery', ['Kombucha Vibe', 'Spaces in Between', 'This Is Why We Jump', 'Publicité Proton'].includes(p.nom));
-  initCarousel(p.images, { captions: p.nom === 'Publicité Proton' });
+  initCarousel(p.images, {
+    captions: p.nom === 'Publicité Proton',
+    preview: 'gallery-preview',
+  });
+  buildGalleryPreview(p.images, 'gallery-preview');
   initCarousel(p.imagesArchive, {
     wrap: 'ph-carousel-archive',
     track: 'carousel-archive-track',
     dots: 'carousel-archive-dots',
     prev: 'carousel-archive-prev',
     next: 'carousel-archive-next',
+    preview: 'gallery-archive-preview',
   });
+  buildGalleryPreview(p.imagesArchive, 'gallery-archive-preview');
 }
 
 // ── Entrance animations ───────────────────────────────────────────────────────

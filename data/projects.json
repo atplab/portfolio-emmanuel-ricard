@@ -4,7 +4,7 @@
       "id": 1,
       "title": "CHEQA",
       "cat": "Design numérique",
-      "year": "2025-2026",
+      "year": "2025 à ce jour",
       "desc": "Maquette d'application et design de marque.",
       "grad": "linear-gradient(135deg,#10b981,#14b8a6,#22d3ee)",
       "accent": "#7ff0e4",
@@ -17,24 +17,24 @@
       "year": "2025",
       "desc": "Jeu de plateforme 2D réalisé en solo sous Godot — 3 niveaux, game-feel soigné.",
       "grad": "linear-gradient(135deg,#7c3aed,#a855f7,#ec4899)",
-      "accent": "#c4a8ff",
+      "accent": "#ffe08a",
       "hasPage": true
     },
     {
       "id": 3,
       "title": "Spaces in Between",
       "cat": "Jeu vidéo",
-      "year": "2025",
+      "year": "2026",
       "desc": "Création d'un jeu de course en réalité virtuelle.",
       "grad": "linear-gradient(135deg,#0f766e,#0891b2,#2563eb)",
-      "accent": "#7ff0e4",
+      "accent": "#7FA6F0",
       "hasPage": true
     },
     {
       "id": 4,
       "title": "Kombucha Vibe",
       "cat": "Web design",
-      "year": "2025",
+      "year": "2026",
       "desc": "Conception et design d'un site internet pour une entreprise de Kombucha.",
       "grad": "linear-gradient(135deg,#fb923c,#ec4899,#f43f5e)",
       "accent": "#ffb89a",
@@ -44,26 +44,27 @@
       "id": 5,
       "title": "Publicité Proton",
       "cat": "Publicité numérique",
-      "year": "2023",
+      "year": "2024",
       "desc": "Création de publicités numériques pour les réseaux sociaux.",
       "grad": "linear-gradient(135deg,#facc15,#fb923c,#ef4444)",
-      "accent": "#ffe08a",
+      "accent": "#c4a8ff",
       "hasPage": true
     },
     {
       "id": 6,
-      "title": "Éditorial — Revista",
-      "cat": "Éditorial",
-      "year": "2023",
-      "desc": "Direction artistique d'un magazine culturel bilingue. Mise en page audacieuse.",
-      "grad": "linear-gradient(135deg,#ec4899,#fb7185,#fdba74)",
-      "accent": "#ffb8d4",
+      "title": "Notre projet",
+      "cat": "projet",
+      "year": "à venir",
+      "desc": "Contactez-moi pour une collaboration sur un projet ensemble.",
+      "grad": "linear-gradient(135deg,#321478,#5C3D9A,#8566BC)",
+      "accent": "#F07FD0",
       "hasPage": false
     }
   ],
   "featuredProject": {
     "nom": "CHEQA",
-    "cours": "Projet d'équipe",
+    "date": "2025 à ce jour",
+    "cours": "Projet personnel d'équipe",
     "mention": "Réalisation d'une maquette d'application, image de marque",
     "equipe": "Louise, Élodie, Alonso, Léo, Marie",
     "roles": "Réalisation de la maquette · Design · Création de contenu marketing en ligne",
@@ -76,27 +77,29 @@
     "youtubeId": "",
     "heroImg": "./assets/Cheqa/page_connexion.png",
     "images": [
-      "./assets/Cheqa/accueil_5_final.png",
-      "./assets/Cheqa/page_connexion.png",
-      "./assets/Cheqa/explorer_nouveau.png",
-      "./assets/Cheqa/mode_créateur.png",
-      "./assets/Cheqa/publier_vidéo.png",
-      "./assets/Cheqa/conversation_nouveau.png",
-      "./assets/Cheqa/messages_nouveau.png",
-      "./assets/Cheqa/paramètres_nouveau.png"
+      "./assets/Cheqa/1.accueil_final.png",
+      "./assets/Cheqa/2.explorer_nouveau.png",
+      "./assets/Cheqa/3.react_nouveau.png",
+      "./assets/Cheqa/4.messages_nouveau.png",
+      "./assets/Cheqa/5.conversation_nouveau.png",
+      "./assets/Cheqa/6.paramètres_nouveau.png",
+      "./assets/Cheqa/7.page_connexion.png",
+      "./assets/Cheqa/8.mode_créateur.png",
+      "./assets/Cheqa/9.publier_vidéo.png"
     ],
     "imagesArchive": [
-      "./assets/Cheqa/accueil_ancien.png",
-      "./assets/Cheqa/conversation_ancien.png",
-      "./assets/Cheqa/explorer_ancien.png",
-      "./assets/Cheqa/messages_ancien.png",
-      "./assets/Cheqa/paramètres_ancien.png",
-      "./assets/Cheqa/react_ancien.png"
+      "./assets/Cheqa/1.accueil_ancien.png",
+      "./assets/Cheqa/2.explorer_ancien.png",
+      "./assets/Cheqa/3.react_ancien.png",
+      "./assets/Cheqa/4.messages_ancien.png",
+      "./assets/Cheqa/5.conversation_ancien.png",
+      "./assets/Cheqa/6.paramètres_ancien.png"
     ]
   },
   "projectDetails": {
     "2": {
       "nom": "This Is Why We Jump",
+      "date": "2025",
       "cours": "Interactivité Ludique",
       "mention": "Réalisation d'un jeu vidéo de plateforme",
       "equipe": "Individuel",
@@ -119,6 +122,7 @@
     },
     "3": {
       "nom": "Spaces in Between",
+      "date": "2026",
       "cours": "Réalité Mixte",
       "mention": "Réalisation d'un jeu vidéo en réalité virtuelle",
       "equipe": "Yasmine Onékéo · Jessica Théoret",
@@ -148,6 +152,7 @@
     },
     "4": {
       "nom": "Kombucha Vibe",
+      "date": "2026",
       "cours": "Web 4",
       "mention": "Réalisation d'un site internet",
       "equipe": "Individuel",
@@ -170,6 +175,7 @@
     },
     "5": {
       "nom": "Publicité Proton",
+      "date": "2024",
       "cours": "Design Graphique",
       "mention": "Créer une publicité pour une compagnie",
       "equipe": "Individuel",
