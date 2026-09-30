@@ -57,6 +57,51 @@ Figma Make
 ## Résultat :
 La version mobile est désormais plus ergonomique avec un menu burger plus efficace et plaisant visuellement. J'ai aussi demandé d'incrémenter une vidéo Youtube, un carrousel de photos, remplacer des boutons et rendu tout le design ergonomique et agréable à regarder.
 
+# Date :
+2026-09-16
+## Prompt :
+Peux-tu faire en sorte que le caroussel tourne automatiquement, sans avoir à cliquer?
+## Outil :
+Copilot
+## Résultat :
+Le caroussel fonctionne automatiquement, sans avoir à cliquer sur les flèches.
+
+# Date :
+2026-09-23
+## Prompt :
+J'ai créé des nouveaux fichiers CSS, peux-tu les relier avec le HTML?
+## Outil :
+Copilot
+## Résultat :
+Tout mes nouveaux fichiers CSS étaient désormais relié au HTML, mais le scrolltrigger ne fonctionne plus pour la section projet.
+
+# Date :
+2026-09-25
+## Prompt :
+Le scrolltrigger ne fonctionne plus, il fait comme si la section projet n'existait pas et la passe, je ne peux plus y accéder. Peux-tu me corriger cela?
+## Outil :
+Copilot
+## Résultat :
+le scrolltrigger fonctionne désormais de nouveau pour la section projet.
+
+# Date :
+2026-09-29
+## Prompt :
+Pour le projet Kombucha Vibe, prendre la page du projet This is Why we jump! et remplir la page avec les informations suivantes : (Ici, j'ai mis les informations nécéssaires). Les images sont d'ailleurs dans le dossier Kombucha Vibe.
+## Outil :
+Copilot
+## Résultat :
+J'ai créé des nouvelles "pages" (sections cachés) Pour inclure la majorité de mes projets sur le site. j'ai fait beaucoup de corrections, de placement des boutons, des dimensions, etc.
+
+# Date :
+2026-09-30
+## Prompt :
+dans la page d'accueil, dans la section projet, rajouter l'image du header des projets sur la carte des projets, mais pas trop visible pour que le fond actuel soit toujours un peu visible et que le texte soit lisible.
+## Outil :
+Copilot
+## Résultat :
+La page de projet est désormais plus agréable et intuitive à regarder. J'ai aussi complété les pages de mes projets, et fait des modifications pour rendre le tout plus esthétique.
+
 <br>
 <br>
 <br>

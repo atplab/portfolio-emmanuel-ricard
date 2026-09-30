@@ -22,13 +22,13 @@
     },
     {
       "id": 3,
-      "title": "Space in Between",
-      "cat": "UI/UX",
+      "title": "Spaces in Between",
+      "cat": "Jeu vidéo",
       "year": "2025",
-      "desc": "Conception d'un jeu interactif en réalité virtuelle.",
-      "grad": "linear-gradient(135deg,#4f46e5,#3b82f6,#7c3aed)",
-      "accent": "#a8c4ff",
-      "hasPage": false
+      "desc": "Création d'un jeu de course en réalité virtuelle.",
+      "grad": "linear-gradient(135deg,#0f766e,#0891b2,#2563eb)",
+      "accent": "#7ff0e4",
+      "hasPage": true
     },
     {
       "id": 4,
@@ -76,6 +76,7 @@
     "youtubeId": "",
     "heroImg": "./assets/Cheqa/page_connexion.png",
     "images": [
+      "./assets/Cheqa/accueil_5_final.png",
       "./assets/Cheqa/page_connexion.png",
       "./assets/Cheqa/explorer_nouveau.png",
       "./assets/Cheqa/mode_créateur.png",
@@ -85,6 +86,7 @@
       "./assets/Cheqa/paramètres_nouveau.png"
     ],
     "imagesArchive": [
+      "./assets/Cheqa/accueil_ancien.png",
       "./assets/Cheqa/conversation_ancien.png",
       "./assets/Cheqa/explorer_ancien.png",
       "./assets/Cheqa/messages_ancien.png",
@@ -106,12 +108,42 @@
       "descPerso": "J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
       "lien": "https://eureka-altima.itch.io/this-is-why-we-jump",
       "youtubeId": "QjrEutFNhsg",
-      "heroImg": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1400&h=700&fit=crop&auto=format",
+      "heroImg": "./assets/This is why we jump!/This is why we jump_nouveaute.png",
       "images": [
-        "https://images.unsplash.com/photo-1780193724876-7ca5083d1004?w=900&h=500&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1556438064-2d7646166914?w=900&h=500&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&h=500&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&h=500&fit=crop&auto=format"
+        "./assets/This is why we jump!/This is why we jump_nouveaute.png",
+        "./assets/This is why we jump!/This is why we jump_bouton_porte.png",
+        "./assets/This is why we jump!/This is why we jump_décor changeant_poison.png",
+        "./assets/This is why we jump!/This is why we jump_ennemy_pieces.png",
+        "./assets/This is why we jump!/This is why we jump_plus de pieges_piece grise.png"
+      ]
+    },
+    "3": {
+      "nom": "Spaces in Between",
+      "cours": "Réalité Mixte",
+      "mention": "Réalisation d'un jeu vidéo en réalité virtuelle",
+      "equipe": "Yasmine Onékéo · Jessica Théoret",
+      "roles": "Création d'un jeu vidéo · Level design",
+      "logiciels": "Unity",
+      "categorie": "Création et level design du projet",
+      "resumé": "Création d'un jeu de course en réalité virtuelle.",
+      "descProf": "Ce projet est un jeu vidéo en réalité virtuelle, contenant de l'interaction avec les objets et l'environnement.",
+      "descPerso": "J'ai créé un jeu de course en réalité virtuelle, où trois lignes sont présentes. Le joueur doit changer entre ces trois lignes pour esquiver les obstacles alors qu'il avance automatiquement. J'ai conçu le niveau, placé les objets, codé le fonctionnement du jeu et réalisé ce monde qui plonge le joueur dans une ambiance agréable à regarder. Le jeu complet contient un sélecteur de niveaux et deux autres mondes, qui ont été faits par mes coéquipières.",
+      "lien": "",
+      "youtubeId": "",
+      "heroImg": "./assets/space in between/space in between/vue_densemble.png",
+      "images": [
+        "./assets/space in between/space in between/vue_densemble.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185530.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185601.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185715.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185813.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185848.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185924.png",
+        "./assets/space in between/space in between/Capture d’écran 2026-09-11 190000.png"
+      ],
+      "sources": [
+        {"label": "Assets", "value": "AssetStore de Unity — POLYGON - Tropical Jungle - Nature Biomes - 3D Environment Art by Synty"},
+        {"label": "Musique", "value": "Pixabay"}
       ]
     },
     "4": {

@@ -5,8 +5,8 @@
   cursor: pointer; min-height: 220px; display: flex; flex-direction: column;
   box-shadow: 0 8px 32px -8px rgba(0,0,0,.5);
 }
-.proj-card-bg    { position: absolute; inset: 0; opacity: .18; transition: opacity .4s; }
-.proj-card:hover .proj-card-bg { opacity: .38; }
+.proj-card-bg    { position: absolute; inset: 0; opacity: .48; transition: opacity .4s; }
+.proj-card:hover .proj-card-bg { opacity: .63; }
 .proj-card-dark  { position: absolute; inset: 0; background: rgba(13,13,26,.8); backdrop-filter: blur(4px); }
 .proj-card-glow  { position: absolute; bottom: -48px; right: -48px; width: 160px; height: 160px; border-radius: 50%; filter: blur(50px); opacity: 0; transform: scale(.5); }
 .proj-card-body  { position: relative; padding: 28px; display: flex; flex-direction: column; gap: 16px; height: 100%; }

@@ -62,8 +62,10 @@ function renderProjects(projects) {
   projects.forEach(p => {
     const card = document.createElement('div');
     card.className = 'proj-card';
+    const detail = PROJECT_DETAILS[String(p.id)] || (p.id === 1 ? FEATURED_PROJECT_DETAIL : null);
+    const heroStyle = detail?.heroImg ? `background-image:url('${detail.heroImg}');background-size:cover;background-position:${detail.nom === 'CHEQA' ? 'center top' : 'center'};` : '';
     card.innerHTML = `
-      <div class="proj-card-bg" style="background:${p.grad}"></div>
+      <div class="proj-card-bg" style="background:${p.grad};${heroStyle}"></div>
       <div class="proj-card-dark"></div>
       <div class="proj-card-glow" style="background:radial-gradient(circle,${p.accent}88,transparent)"></div>
       <div class="proj-card-body">
@@ -333,6 +335,7 @@ function openLightbox(images, start) {
 function fillProject() {
   const p = PROJECT_DETAIL;
   if (!p) return;
+  document.querySelector('.proj-hero').classList.toggle('cheqa-hero', p.nom === 'CHEQA');
   document.getElementById('ph-img').src           = p.heroImg;
   document.getElementById('ph-cat').textContent   = p.categorie;
   document.getElementById('ph-label').textContent = `✦ Projet — ${p.cours}`;
@@ -341,6 +344,13 @@ function fillProject() {
   document.getElementById('ph-link').href         = p.lien;
   document.getElementById('ph-prof').innerHTML    = `<p>${p.descProf}</p>`;
   document.getElementById('ph-perso').innerHTML   = `<p>${p.descPerso}</p>`;
+
+  const sourcesWrap = document.getElementById('ph-sources');
+  const sourcesList = document.getElementById('ph-sources-list');
+  sourcesList.innerHTML = (p.sources || [])
+    .map(source => `<div class="source-card bubble"><div class="source-label">${source.label}</div><div class="source-value">${source.value}</div></div>`)
+    .join('');
+  sourcesWrap.style.display = p.sources?.length ? 'block' : 'none';
 
   const cta = document.getElementById('ph-cta');
   cta.style.display = p.lien ? '' : 'none';
@@ -364,9 +374,10 @@ function fillProject() {
 
   document.getElementById('ph-carousel').classList.toggle('cheqa-gallery', p.nom === 'CHEQA');
   document.getElementById('ph-carousel').classList.toggle('kombucha-gallery', p.nom === 'Kombucha Vibe');
+  document.getElementById('ph-carousel').classList.toggle('spaces-gallery', ['Spaces in Between', 'This Is Why We Jump'].includes(p.nom));
   document.getElementById('ph-carousel').classList.toggle('proton-gallery', p.nom === 'Publicité Proton');
   document.getElementById('ph-carousel-archive').classList.toggle('cheqa-gallery', p.nom === 'CHEQA');
-  document.getElementById('ph-galleries').classList.toggle('wide-gallery', ['Kombucha Vibe', 'Publicité Proton'].includes(p.nom));
+  document.getElementById('ph-galleries').classList.toggle('wide-gallery', ['Kombucha Vibe', 'Spaces in Between', 'This Is Why We Jump', 'Publicité Proton'].includes(p.nom));
   initCarousel(p.images, { captions: p.nom === 'Publicité Proton' });
   initCarousel(p.imagesArchive, {
     wrap: 'ph-carousel-archive',
