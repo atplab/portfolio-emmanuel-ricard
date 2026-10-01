@@ -260,6 +260,26 @@ body, button, a {
 .social-link:hover { color: var(--lavender); }
 .footer        { text-align: center; margin-top: 48px; font-size: .75rem; color: rgba(255,255,255,.2); padding-bottom: 100px; }
 
+@media (max-width: 600px) {
+  #contact {
+    padding: 80px 16px 32px;
+  }
+
+  .contact-card {
+    width: 100%;
+    padding: 48px 20px;
+  }
+
+  .contact-btns {
+    width: 100%;
+  }
+
+  .contact-btns a {
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
 
 /* ── page de projet ──────────────────────────────────────────────── */
 .back-btn {

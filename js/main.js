@@ -1,4 +1,4 @@
-// ── Data ──────────────────────────────────────────────────────────────────────
+// ── Données ──────────────────────────────────────────────────────────────────────
 const TOOLS = [
   { name:"Figma",                 level:"mastered" },
   { name:"DaVinci Resolve",       level:"mastered" },
@@ -27,7 +27,7 @@ let PROJECT_DETAIL = null;
 let PROJECT_DETAILS = {};
 let FEATURED_PROJECT_DETAIL = null;
 
-// ── Stars ─────────────────────────────────────────────────────────────────────
+// ── Étoiles ─────────────────────────────────────────────────────────────────────
 const starsEl = document.getElementById('stars');
 for(let i=0;i<120;i++){
   const s = document.createElement('div');
@@ -36,7 +36,7 @@ for(let i=0;i<120;i++){
   starsEl.appendChild(s);
 }
 
-// ── Tools ─────────────────────────────────────────────────────────────────────
+// ── Outils ─────────────────────────────────────────────────────────────────────
 const CATS = [
   { key:"mastered",     label:"Maîtrise",     color:"var(--lavender)" },
   { key:"intermediate", label:"Intermédiaire", color:"var(--mint)" },
@@ -55,7 +55,7 @@ CATS.forEach(cat => {
     </div>`);
 });
 
-// ── Projects ──────────────────────────────────────────────────────────────────
+// ── Projets ──────────────────────────────────────────────────────────────────
 const grid = document.getElementById('projects-grid');
 function renderProjects(projects) {
   grid.innerHTML = '';
@@ -124,7 +124,7 @@ projectsDataPromise
     grid.innerHTML = '<p class="body-text">Impossible de charger les projets.</p>';
   });
 
-// ── Bubbles ───────────────────────────────────────────────────────────────────
+// ── Bulles ───────────────────────────────────────────────────────────────────
 function bindBubbles(root) {
   root.querySelectorAll('.bubble').forEach(el => {
     if(el._b) return; el._b = true;
@@ -134,7 +134,7 @@ function bindBubbles(root) {
 }
 bindBubbles(document);
 
-// ── Nav ───────────────────────────────────────────────────────────────────────
+// ── Navigation ───────────────────────────────────────────────────────────────────────
 const navBtns    = document.querySelectorAll('.nav-btn');
 const burgerItems = document.querySelectorAll('.burger-item');
 const burgerBtn  = document.getElementById('burger-btn');
@@ -200,7 +200,7 @@ function scrollToId(id) {
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── Project Switcher ──────────────────────────────────────────────────────────
+// ── Changer projet──────────────────────────────────────────────────────────
 const switcherMenu = document.getElementById('proj-switcher-menu');
 const switcherBtn  = document.getElementById('proj-switcher-btn');
 
@@ -249,7 +249,7 @@ function goHome() {
 document.getElementById('proj-nav-back').addEventListener('click', goHome);
 projTopBack.addEventListener('click', goHome);
 
-// ── Carousel ──────────────────────────────────────────────────────────────────
+// ── Caroussel ──────────────────────────────────────────────────────────────────
 const carouselTimers = {};
 
 function initCarousel(images, ids = {}) {
@@ -365,7 +365,7 @@ function openLightbox(images, start = 0) {
   requestAnimationFrame(() => lb.classList.add('open'));
 }
 
-// ── Fill project ──────────────────────────────────────────────────────────────
+// ── Infos projets ──────────────────────────────────────────────────────────────
 function fillProject() {
   const p = PROJECT_DETAIL;
   if (!p) return;
@@ -435,7 +435,7 @@ function fillProject() {
   buildGalleryPreview(p.imagesArchive, 'gallery-archive-preview');
 }
 
-// ── Entrance animations ───────────────────────────────────────────────────────
+// ── Animations d'entrée ───────────────────────────────────────────────────────
 gsap.from('.hero-badge', { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.2 });
 gsap.from('.hero-title', { opacity:0, y:40, duration:.8, ease:'power3.out', delay:.4 });
 gsap.from('.hero-sub',   { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.65 });
