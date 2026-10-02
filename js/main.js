@@ -200,6 +200,51 @@ function scrollToId(id) {
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+const HOME_SECTION_IDS = ['hero', 'work', 'skills', 'about', 'contact'];
+
+function getCurrentHomeSectionId() {
+  const focusedSection = document.activeElement?.closest?.('section')?.id;
+  if (HOME_SECTION_IDS.includes(focusedSection)) return focusedSection;
+
+  const st = homeEl.scrollTop;
+  for (const id of HOME_SECTION_IDS) {
+    const section = document.getElementById(id);
+    if (section && section.offsetTop - 120 <= st && section.offsetTop + section.offsetHeight > st) {
+      return id;
+    }
+  }
+
+  return 'hero';
+}
+
+function focusSection(id) {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  if (!section.hasAttribute('tabindex')) {
+    section.setAttribute('tabindex', '-1');
+  }
+
+  section.focus({ preventScroll: true });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Tab' || e.ctrlKey || e.altKey || e.metaKey) return;
+  if (homeEl.classList.contains('hidden')) return;
+
+  const targetTag = e.target?.tagName;
+  if (targetTag === 'INPUT' || targetTag === 'TEXTAREA' || targetTag === 'SELECT' || e.target?.isContentEditable) return;
+
+  const currentIndex = HOME_SECTION_IDS.indexOf(getCurrentHomeSectionId());
+  const nextIndex = e.shiftKey ? currentIndex - 1 : currentIndex + 1;
+  if (nextIndex < 0 || nextIndex >= HOME_SECTION_IDS.length) return;
+
+  e.preventDefault();
+  const nextSectionId = HOME_SECTION_IDS[nextIndex];
+  scrollToId(nextSectionId);
+  window.setTimeout(() => focusSection(nextSectionId), 180);
+});
+
 // ── Changer projet──────────────────────────────────────────────────────────
 const switcherMenu = document.getElementById('proj-switcher-menu');
 const switcherBtn  = document.getElementById('proj-switcher-btn');

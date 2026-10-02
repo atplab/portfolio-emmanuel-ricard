@@ -46,6 +46,37 @@ button {
   color: inherit;
 }
 
+:is(a, button, input, textarea, select, [tabindex]):focus {
+  outline: none;
+}
+
+:is(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 2px rgba(7, 7, 26, .95),
+    0 0 0 5px rgba(196, 168, 255, .42),
+    0 0 0 9px rgba(255, 143, 212, .18);
+}
+
+#hero:focus,
+#hero:focus-visible,
+#work:focus,
+#work:focus-visible,
+#skills:focus,
+#skills:focus-visible,
+#about:focus,
+#about:focus-visible,
+#contact:focus,
+#contact:focus-visible {
+  outline: none;
+  border-radius: 2rem;
+  box-shadow:
+    0 0 0 2px rgba(7, 7, 26, .95),
+    0 0 0 4px rgba(127, 240, 228, .24),
+    0 0 0 8px rgba(196, 168, 255, .30),
+    0 0 0 12px rgba(255, 143, 212, .16);
+}
+
 body, button, a {
   -webkit-tap-highlight-color: transparent;
 }
