@@ -135,7 +135,7 @@
 .sec-img-wrap:hover img { transform: scale(1.07) translateY(-4px); filter: brightness(1.06) saturate(1.08); }
 .cta-section { text-align: center; }
 .cta-title { font-family: var(--fd); font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
-.cta-sub   { font-size: .875rem; color: rgba(255,255,255,.4); margin-bottom: 32px; }
+.cta-sub   { font-size: .875rem; color: rgba(255,255,255,.75); margin-bottom: 32px; }
 .btn-itch  {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 16px 40px; border-radius: 9999px; text-decoration: none;
