@@ -1,5 +1,5 @@
 
-
+/* Cartes de projets visibles dans la grille d'accueil. */
 .proj-card {
   position: relative; border-radius: 1.5rem; overflow: hidden;
   cursor: pointer; min-height: 220px; display: flex; flex-direction: column;

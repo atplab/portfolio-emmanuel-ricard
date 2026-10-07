@@ -1,4 +1,4 @@
-// ── Données ──────────────────────────────────────────────────────────────────────
+// ── Données de base utilisées pour remplir les sections du portfolio ──
 const TOOLS = [
   { name:"Figma",                 level:"mastered" },
   { name:"DaVinci Resolve",       level:"mastered" },
@@ -27,7 +27,7 @@ let PROJECT_DETAIL = null;
 let PROJECT_DETAILS = {};
 let FEATURED_PROJECT_DETAIL = null;
 
-// ── Étoiles ─────────────────────────────────────────────────────────────────────
+// Génère l'arrière-plan étoilé de manière procédurale.
 const starsEl = document.getElementById('stars');
 for(let i=0;i<120;i++){
   const s = document.createElement('div');
@@ -36,7 +36,7 @@ for(let i=0;i<120;i++){
   starsEl.appendChild(s);
 }
 
-// ── Outils ─────────────────────────────────────────────────────────────────────
+// Regroupe les outils par niveau de maîtrise pour les afficher par catégorie.
 const CATS = [
   { key:"mastered",     label:"Maîtrise",     color:"var(--lavender)" },
   { key:"intermediate", label:"Intermédiaire", color:"var(--mint)" },
@@ -55,7 +55,7 @@ CATS.forEach(cat => {
     </div>`);
 });
 
-// ── Projets ──────────────────────────────────────────────────────────────────
+// Construit les cartes de projets affichées sur la page d'accueil.
 const grid = document.getElementById('projects-grid');
 function renderProjects(projects) {
   grid.innerHTML = '';
@@ -94,6 +94,7 @@ function renderProjects(projects) {
 }
 
 function renderProjectSwitcher(projects) {
+  // Remplit le menu de changement rapide de projet dans la vue détaillée.
   const switcherList = document.getElementById('proj-switcher-list');
   switcherList.innerHTML = '';
   projects.forEach(p => {
@@ -124,7 +125,7 @@ projectsDataPromise
     grid.innerHTML = '<p class="body-text">Impossible de charger les projets.</p>';
   });
 
-// ── Bulles ───────────────────────────────────────────────────────────────────
+// Ajoute un léger effet d'agrandissement sur les éléments décorés en .bubble.
 function bindBubbles(root) {
   root.querySelectorAll('.bubble').forEach(el => {
     if(el._b) return; el._b = true;
@@ -134,7 +135,7 @@ function bindBubbles(root) {
 }
 bindBubbles(document);
 
-// ── Navigation ───────────────────────────────────────────────────────────────────────
+// Synchronise les boutons de navigation avec la section visible.
 const navBtns    = document.querySelectorAll('.nav-btn');
 const burgerItems = document.querySelectorAll('.burger-item');
 const burgerBtn  = document.getElementById('burger-btn');
@@ -185,8 +186,6 @@ function scrollToId(id) {
   const target = document.getElementById(id);
   const container = document.getElementById('page-home');
 
-  console.log('Scrolling to:', id, target, container);
-
   if (!target) return;
 
   if (container && container.contains(target)) {
@@ -203,6 +202,7 @@ function scrollToId(id) {
 const HOME_SECTION_IDS = ['hero', 'work', 'skills', 'about', 'contact'];
 
 function getCurrentHomeSectionId() {
+  // Détermine la section active pour mettre à jour la navigation.
   const focusedSection = document.activeElement?.closest?.('section')?.id;
   if (HOME_SECTION_IDS.includes(focusedSection)) return focusedSection;
 
@@ -229,6 +229,7 @@ function focusSection(id) {
 }
 
 document.addEventListener('keydown', e => {
+  // Permet de naviguer entre les sections avec Tab quand on est sur l'accueil.
   if (e.key !== 'Tab' || e.ctrlKey || e.altKey || e.metaKey) return;
   if (homeEl.classList.contains('hidden')) return;
 
@@ -245,7 +246,7 @@ document.addEventListener('keydown', e => {
   window.setTimeout(() => focusSection(nextSectionId), 180);
 });
 
-// ── Changer projet──────────────────────────────────────────────────────────
+// Ouvre / ferme le menu qui permet de changer de projet rapidement.
 const switcherMenu = document.getElementById('proj-switcher-menu');
 const switcherBtn  = document.getElementById('proj-switcher-btn');
 
@@ -253,7 +254,7 @@ switcherBtn.addEventListener('click', e => { e.stopPropagation(); switcherMenu.c
 document.addEventListener('click', () => switcherMenu.classList.remove('open'));
 switcherMenu.addEventListener('click', e => e.stopPropagation());
 
-// ── Page transitions ──────────────────────────────────────────────────────────
+// Fait la transition entre la page d'accueil et la page projet.
 let busy = false;
 const homeEl    = document.getElementById('page-home');
 const projEl    = document.getElementById('page-project');
@@ -294,7 +295,7 @@ function goHome() {
 document.getElementById('proj-nav-back').addEventListener('click', goHome);
 projTopBack.addEventListener('click', goHome);
 
-// ── Caroussel ──────────────────────────────────────────────────────────────────
+// Gère les carrousels d'images avec navigation et auto-défilement.
 const carouselTimers = {};
 
 function initCarousel(images, ids = {}) {
@@ -311,6 +312,7 @@ function initCarousel(images, ids = {}) {
   let idx = 0;
 
   function syncPreviewHighlight() {
+    // Met en évidence la miniature correspondant à l'image affichée.
     if (!previewContainer) return;
     previewContainer.querySelectorAll('.gallery-preview-item').forEach((item, i) => {
       item.classList.toggle('active', i === idx);
@@ -334,6 +336,7 @@ function initCarousel(images, ids = {}) {
   });
 
   function updateRatio(i) {
+    // Ajuste le ratio de la zone pour éviter les déformations sur certains projets.
     if (i !== idx) return;
     const image = track.querySelectorAll('img')[i];
     if (image?.naturalWidth && image?.naturalHeight) {
@@ -350,6 +353,7 @@ function initCarousel(images, ids = {}) {
   }
 
   function resetTimer() {
+    // Relance le défilement automatique après interaction utilisateur.
     clearInterval(carouselTimers[key]);
     carouselTimers[key] = setInterval(() => goTo(idx + 1), 4000);
   }
@@ -360,6 +364,7 @@ function initCarousel(images, ids = {}) {
 }
 
 function buildGalleryPreview(images, containerId) {
+  // Crée les miniatures d'aperçu sous le carrousel principal.
   const container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = '';
@@ -384,7 +389,7 @@ function buildGalleryPreview(images, containerId) {
   if (firstPreview) firstPreview.classList.add('active');
 }
 
-// ── Lightbox ──────────────────────────────────────────────────────────────────
+// Ouvre l'image en grand écran avec navigation précédente / suivante.
 function openLightbox(images, start = 0) {
   let i = start;
   const lb  = document.createElement('div'); lb.id = 'lightbox';
@@ -410,7 +415,7 @@ function openLightbox(images, start = 0) {
   requestAnimationFrame(() => lb.classList.add('open'));
 }
 
-// ── Infos projets ──────────────────────────────────────────────────────────────
+// Injecte dans la page projet les données correspondant au projet sélectionné.
 function fillProject() {
   const p = PROJECT_DETAIL;
   if (!p) return;
@@ -449,6 +454,7 @@ function fillProject() {
   document.getElementById('ph-video').src = p.youtubeId ? `https://www.youtube.com/embed/${p.youtubeId}` : '';
   videoWrap.style.display = p.youtubeId ? 'block' : 'none';
 
+  // Bloc récapitulatif des infos du projet.
   document.getElementById('ph-meta').innerHTML = [
     {label:"Mention",   value:p.mention},
     {label:"Cours",     value:p.cours},
@@ -480,7 +486,7 @@ function fillProject() {
   buildGalleryPreview(p.imagesArchive, 'gallery-archive-preview');
 }
 
-// ── Animations d'entrée ───────────────────────────────────────────────────────
+// Petites animations d'entrée au chargement pour rendre la page plus vivante.
 gsap.from('.hero-badge', { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.2 });
 gsap.from('.hero-title', { opacity:0, y:40, duration:.8, ease:'power3.out', delay:.4 });
 gsap.from('.hero-sub',   { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.65 });

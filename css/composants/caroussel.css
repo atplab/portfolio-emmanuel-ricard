@@ -1,4 +1,4 @@
-/* ── Caroussel ──────────────────────────────────────────────────── */
+/* Carrousels et galeries d'images des projets. */
 .carousel { margin-bottom: 56px; }
 .gallery-preview {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px;

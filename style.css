@@ -395,11 +395,46 @@ html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(-
 .proj-hero:hover img { transform: scale(1.06); filter: brightness(1.07) saturate(1.1); }
 .proj-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom,rgba(7,7,26,.3) 0%,rgba(7,7,26,.9) 75%,#07071a 100%);
-  transition: background .5s;
+  background: linear-gradient(to bottom,rgba(7,7,26,.14) 0%,rgba(7,7,26,.48) 75%,rgba(7,7,26,.56) 100%);
+  opacity: 1;
+  transition: opacity .7s cubic-bezier(.22,1,.36,1);
+}
+.proj-hero-overlay::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,rgba(7,7,26,.06) 0%,rgba(100,50,200,.14) 40%,rgba(7,7,26,.28) 75%,rgba(7,7,26,.34) 100%);
+  opacity: 0;
 }
 .proj-hero:hover .proj-hero-overlay {
-  background: linear-gradient(to bottom,rgba(7,7,26,.1) 0%,rgba(100,50,200,.18) 40%,rgba(7,7,26,.88) 75%,#07071a 100%);
+  opacity: 0;
+}
+.proj-divider {
+  width: 100%;
+  height: 2px;
+  margin: 0;
+  background: linear-gradient(90deg, #c4a8ff 0%, #ffb89a 35%, #e8ddff 50%, #ffb89a 65%, #c4a8ff 100%);
+  background-size: 200% 100%;
+  animation: proj-divider-slide 4s linear infinite;
+  box-shadow: 0 0 18px rgba(196,168,255,.26);
+  position: relative;
+  z-index: 3;
+}
+.proj-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.55) 48%, transparent 100%);
+  background-size: 200% 100%;
+  animation: proj-divider-glow 4s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes proj-divider-slide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes proj-divider-glow {
+  0%, 100% { background-position: 0% 50%; opacity: .45; }
+  50% { background-position: 100% 50%; opacity: .8; }
 }
 .proj-hero-shimmer {
   position: absolute; left: 0; right: 0; top: 0; height: 1px;

@@ -1,4 +1,4 @@
-/* ── Nav du bas ────────────────────────────────────────────────── */
+/* Navigation principale affichée en bas de l'écran. */
 #bottom-nav {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
   z-index: 100; display: flex; gap: 4px; padding: 12px;
@@ -20,7 +20,7 @@
 
 
 
-/* ── Burger (mobile) ───────────────────────────────────────────── */
+/* Menu burger utilisé sur mobile. */
 #burger-btn {
   display: none;
   position: fixed; bottom: 24px; right: 24px; z-index: 200;
@@ -69,7 +69,7 @@
 }
 
 
-/* ── navigation des projets ──────────────────────────────────────────── */
+/* Navigation spécifique à la vue des projets. */
 #proj-nav {
   display: none; position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
   z-index: 100; padding: 12px; border-radius: 9999px;

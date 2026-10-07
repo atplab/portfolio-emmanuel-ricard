@@ -1,4 +1,4 @@
-/* ── Lightbox ───────────────────────────────────────────────────── */
+/* Fenêtre plein écran pour agrandir les images. */
 #lightbox {
   --lb-controls-gap: 16px;
 }
