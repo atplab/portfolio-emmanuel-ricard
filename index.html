@@ -44,7 +44,7 @@
   <section id="work">
     <div class="sec-header">
       <p class="label" style="color:var(--peach)">✦ Projets</p>
-      <h2>Ce que je crée</h2>
+      <h2>Mes projets</h2>
     </div>
     <div class="projects-grid" id="projects-grid"></div>
   </section>
@@ -94,7 +94,7 @@
 <div id="page-project" class="page hidden">
   <!-- En-tête du projet -->
   <div class="proj-hero">
-    <img id="ph-img" src="" alt="" />
+    <img id="ph-img" src="" alt="" loading="lazy" />
     <div class="proj-hero-overlay"></div>
     <div class="proj-hero-shimmer"></div>
     <div class="proj-hero-cat" id="ph-cat"></div>
@@ -158,6 +158,38 @@
       <p class="label" style="color:var(--lavender);margin-bottom:20px">✦ Vidéo</p>
       <div class="video-frame">
         <iframe id="ph-video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Processus de création du projet -->
+    <div id="ph-process-wrap" class="process-wrap" style="display:none">
+      <p class="label" style="color:var(--mint);margin-bottom:20px">✦ Processus de création</p>
+      <div class="process-section bubble">
+        <div class="process-step">
+          <div class="process-step__index">01</div>
+          <div>
+            <h3 class="process-step__title">Définir l'identité visuelle</h3>
+            <p class="process-step__text">Avant de concevoir la maquette de l'application, nous avons d'abord défini son identité visuelle : couleurs primaires, typographie, logo, etc. Nous avons créé un moodboard d'inspiration, puis expérimenté différentes combinaisons de couleurs jusqu'à trouver une harmonie entre le logo et les textes.</p>
+          </div>
+        </div>
+
+        <div class="process-gallery" id="ph-process-gallery"></div>
+
+        <div class="process-step">
+          <div class="process-step__index">02</div>
+          <div>
+            <h3 class="process-step__title">Poser les fondamentaux</h3>
+            <p class="process-step__text">Ensuite, nous avons défini les fondamentaux de l'application : ses fonctionnalités essentielles et son fonctionnement général. J'ai ainsi pu démarrer la création de la maquette sur Figma Make.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step__index">03</div>
+          <div>
+            <h3 class="process-step__title">Affiner l'expérience</h3>
+            <p class="process-step__text">J'ai ensuite affiné l'application en incorporant les suggestions de mon équipe : ajout de fonctionnalités, intégration d'animations, réorganisation de l'interface, création de nouvelles pages et autres améliorations pour offrir une expérience moderne, pratique et intuitive.</p>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -73,27 +73,50 @@
     "resumé": "Créer, designer et faire la promotion d'une application de réseau social.",
     "descProf": "Ce projet est une application de réseau social avec comme objectif de partager du contenu sourcé.",
     "descPerso": "J'ai créé, designé et composé la maquette de l'application, la position des éléments dans l'application, le contenu et l'affichage visuel de l'application. J'ai aussi travaillé sur la typographie, les couleurs de la marque, la création du logo et le contenu de promotion sur les réseaux sociaux.",
+    "process": {
+      "title": "Processus de création",
+      "steps": [
+        {
+          "title": "Définir l'identité visuelle",
+          "text": "Avant de concevoir la maquette de l'application, nous avons d'abord défini son identité visuelle : couleurs primaires, typographie, logo, etc. Nous avons créé un moodboard d'inspiration, puis expérimenté différentes combinaisons de couleurs jusqu'à trouver une harmonie entre le logo et les textes."
+        },
+        {
+          "title": "Poser les fondamentaux",
+          "text": "Ensuite, nous avons défini les fondamentaux de l'application : ses fonctionnalités essentielles et son fonctionnement général. J'ai ainsi pu démarrer la création de la maquette sur Figma Make."
+        },
+        {
+          "title": "Affiner l'expérience",
+          "text": "J'ai ensuite affiné l'application en incorporant les suggestions de mon équipe : ajout de fonctionnalités, intégration d'animations, réorganisation de l'interface, création de nouvelles pages et autres améliorations pour offrir une expérience moderne, pratique et intuitive."
+        }
+      ],
+      "images": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
     "lien": "",
     "youtubeId": "",
-    "heroImg": "./assets/Cheqa/7.page_connexion.png",
+    "heroImg": "./assets/Cheqa/7.page_connexion.webp",
     "images": [
-      "./assets/Cheqa/1.accueil_final.png",
-      "./assets/Cheqa/2.explorer_nouveau.png",
-      "./assets/Cheqa/3.react_nouveau.png",
-      "./assets/Cheqa/4.messages_nouveau.png",
-      "./assets/Cheqa/5.conversation_nouveau.png",
-      "./assets/Cheqa/6.paramètres_nouveau.png",
-      "./assets/Cheqa/7.page_connexion.png",
-      "./assets/Cheqa/8.mode_créateur.png",
-      "./assets/Cheqa/9.publier_vidéo.png"
+      "./assets/Cheqa/1.accueil_final.webp",
+      "./assets/Cheqa/2.explorer_nouveau.webp",
+      "./assets/Cheqa/3.react_nouveau.webp",
+      "./assets/Cheqa/4.messages_nouveau.webp",
+      "./assets/Cheqa/5.conversation_nouveau.webp",
+      "./assets/Cheqa/6.paramètres_nouveau.webp",
+      "./assets/Cheqa/7.page_connexion.webp",
+      "./assets/Cheqa/8.mode_créateur.webp",
+      "./assets/Cheqa/9.publier_vidéo.webp"
     ],
     "imagesArchive": [
-      "./assets/Cheqa/1.accueil_ancien.png",
-      "./assets/Cheqa/2.explorer_ancien.png",
-      "./assets/Cheqa/3.react_ancien.png",
-      "./assets/Cheqa/4.messages_ancien.png",
-      "./assets/Cheqa/5.conversation_ancien.png",
-      "./assets/Cheqa/6.paramètres_ancien.png"
+      "./assets/Cheqa/1.accueil_ancien.webp",
+      "./assets/Cheqa/2.explorer_ancien.webp",
+      "./assets/Cheqa/3.react_ancien.webp",
+      "./assets/Cheqa/4.messages_ancien.webp",
+      "./assets/Cheqa/5.conversation_ancien.webp",
+      "./assets/Cheqa/6.paramètres_ancien.webp"
     ]
   },
   "projectDetails": {
@@ -111,13 +134,13 @@
       "descPerso": "J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
       "lien": "https://eureka-altima.itch.io/this-is-why-we-jump",
       "youtubeId": "QjrEutFNhsg",
-      "heroImg": "./assets/This is why we jump!/This is why we jump_nouveaute.png",
+      "heroImg": "./assets/This is why we jump!/This is why we jump_nouveaute.webp",
       "images": [
-        "./assets/This is why we jump!/This is why we jump_nouveaute.png",
-        "./assets/This is why we jump!/This is why we jump_bouton_porte.png",
-        "./assets/This is why we jump!/This is why we jump_décor changeant_poison.png",
-        "./assets/This is why we jump!/This is why we jump_ennemy_pieces.png",
-        "./assets/This is why we jump!/This is why we jump_plus de pieges_piece grise.png"
+        "./assets/This is why we jump!/This is why we jump_nouveaute.webp",
+        "./assets/This is why we jump!/This is why we jump_bouton_porte.webp",
+        "./assets/This is why we jump!/This is why we jump_décor changeant_poison.webp",
+        "./assets/This is why we jump!/This is why we jump_ennemy_pieces.webp",
+        "./assets/This is why we jump!/This is why we jump_plus de pieges_piece grise.webp"
       ]
     },
     "3": {
@@ -134,16 +157,16 @@
       "descPerso": "J'ai créé un jeu de course en réalité virtuelle, où trois lignes sont présentes. Le joueur doit changer entre ces trois lignes pour esquiver les obstacles alors qu'il avance automatiquement. J'ai conçu le niveau, placé les objets, codé le fonctionnement du jeu et réalisé ce monde qui plonge le joueur dans une ambiance agréable à regarder. Le jeu complet contient un sélecteur de niveaux et deux autres mondes, qui ont été faits par mes coéquipières.",
       "lien": "",
       "youtubeId": "",
-      "heroImg": "./assets/space in between/space in between/vue_densemble.png",
+      "heroImg": "./assets/space in between/vue_densemble.webp",
       "images": [
-        "./assets/space in between/space in between/vue_densemble.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185530.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185601.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185715.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185813.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185848.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 185924.png",
-        "./assets/space in between/space in between/Capture d’écran 2026-09-11 190000.png"
+        "./assets/space in between/vue_densemble.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 185530.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 185601.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 185715.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 185813.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 185848.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 185924.webp",
+        "./assets/space in between/Capture d’écran 2026-09-11 190000.webp"
       ],
       "sources": [
         {"label": "Assets", "value": "AssetStore de Unity — POLYGON - Tropical Jungle - Nature Biomes - 3D Environment Art by Synty"},
@@ -164,13 +187,13 @@
       "descPerso": "J'ai fait des animations fluides, des boutons interactifs, une page dynamique et visuellement agréable à regarder. Tout est facile à comprendre, avec des catégories qui se suivent graphiquement.",
       "lien": "",
       "youtubeId": "",
-      "heroImg": "./assets/Kombucha Vibe/header.png",
+      "heroImg": "./assets/Kombucha Vibe/header.webp",
       "images": [
-        "./assets/Kombucha Vibe/header.png",
-        "./assets/Kombucha Vibe/boutique.png",
-        "./assets/Kombucha Vibe/en_savoir_plus.png",
-        "./assets/Kombucha Vibe/rejoignez_nous.png",
-        "./assets/Kombucha Vibe/section_fruits.png"
+        "./assets/Kombucha Vibe/header.webp",
+        "./assets/Kombucha Vibe/boutique.webp",
+        "./assets/Kombucha Vibe/en_savoir_plus.webp",
+        "./assets/Kombucha Vibe/rejoignez_nous.webp",
+        "./assets/Kombucha Vibe/section_fruits.webp"
       ]
     },
     "5": {
@@ -187,15 +210,15 @@
       "descPerso": "J'ai promu la compagnie Proton, en designant des publications et en trouvant des couleurs dynamiques allant avec le style de la marque. J'ai gardé les valeurs transmises par la marque, tout en envoyant un message impactant et direct au consommateur de la publicité.",
       "lien": "",
       "youtubeId": "",
-      "heroImg": "./assets/Publicité Proton/Publicité.png",
+      "heroImg": "./assets/Publicité Proton/Publicité.webp",
       "images": [
-        "./assets/Publicité Proton/Publicité.png",
-        "./assets/Publicité Proton/Facebook - publicité dans le fil de publications (feed).png",
-        "./assets/Publicité Proton/Instagram publicité dans le fil de publications (feed).png",
-        "./assets/Publicité Proton/Story.png",
-        "./assets/Publicité Proton/Site web plein-écran 1920x1080.png",
-        "./assets/Publicité Proton/Planche d'inspiration.png",
-        "./assets/Publicité Proton/planche de style.png"
+        "./assets/Publicité Proton/Publicité.webp",
+        "./assets/Publicité Proton/Facebook - publicité dans le fil de publications (feed).webp",
+        "./assets/Publicité Proton/Instagram publicité dans le fil de publications (feed).webp",
+        "./assets/Publicité Proton/Story.webp",
+        "./assets/Publicité Proton/Site web plein-écran 1920x1080.webp",
+        "./assets/Publicité Proton/Planche d'inspiration.webp",
+        "./assets/Publicité Proton/planche de style.webp"
       ]
     }
   }

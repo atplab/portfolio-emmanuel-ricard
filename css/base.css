@@ -145,9 +145,20 @@ body, button, a {
 }
 
 /* Grille des projets sur la page d'accueil. */
-#work { padding: 80px 24px; min-height: 100vh; scroll-snap-align: start; }
+#work {
+  padding: 80px 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+}
 
-.sec-header { text-align: center; margin-bottom: 64px; }
+.sec-header {
+  text-align: center;
+  margin-bottom: 56px;
+  transform: translateY(-18px);
+}
 .sec-header h2 { font-family: var(--fd); font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; color: #fff; }
 
 .projects-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1152px; margin: 0 auto; }
@@ -425,3 +436,71 @@ body, button, a {
 .desc-block { border-radius: 1rem; padding: 24px; }
 .desc-block p { color: rgba(240,240,255,.75); line-height: 1.8; font-size: .9rem; }
 .video-wrap { margin-bottom: 56px; }
+.process-wrap { margin-bottom: 56px; }
+.process-section {
+  padding: 28px;
+  border-radius: 1.25rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.process-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.process-step + .process-step { margin-top: 28px; }
+.process-step__index {
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, rgba(127,240,228,.16), rgba(196,168,255,.16));
+  border: 1px solid rgba(255,255,255,.1);
+  color: var(--white);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.process-step__title {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: var(--white);
+}
+.process-step__text {
+  color: rgba(240,240,255,.75);
+  line-height: 1.85;
+  font-size: .92rem;
+}
+.process-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 28px 0;
+}
+@media(min-width:768px){ .process-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.process-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.process-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.process-photo--empty {
+  display: grid;
+  place-items: center;
+  color: rgba(240,240,255,.45);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-style: dashed;
+}

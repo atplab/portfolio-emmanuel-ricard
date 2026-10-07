@@ -454,6 +454,20 @@ function fillProject() {
   document.getElementById('ph-video').src = p.youtubeId ? `https://www.youtube.com/embed/${p.youtubeId}` : '';
   videoWrap.style.display = p.youtubeId ? 'block' : 'none';
 
+  const processWrap = document.getElementById('ph-process-wrap');
+  const processGallery = document.getElementById('ph-process-gallery');
+  const processData = p.process || null;
+  if (processData?.steps?.length) {
+    const processImages = Array.isArray(processData.images) ? processData.images : [];
+    const processSlots = processImages.length ? processImages : [null, null, null, null];
+    processGallery.innerHTML = processSlots.map((src, index) => src
+      ? `<button type="button" class="process-photo" data-process-photo="${index}"><img src="${src}" alt="Processus de création - photo ${index + 1}" loading="lazy"></button>`
+      : `<div class="process-photo process-photo--empty" aria-hidden="true"><span>Photo ${index + 1}</span></div>`).join('');
+    processWrap.style.display = 'block';
+  } else {
+    processWrap.style.display = 'none';
+  }
+
   // Bloc récapitulatif des infos du projet.
   document.getElementById('ph-meta').innerHTML = [
     {label:"Mention",   value:p.mention},
