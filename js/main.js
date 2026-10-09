@@ -36,6 +36,73 @@ for(let i=0;i<120;i++){
   starsEl.appendChild(s);
 }
 
+// Ajoute une traînée discrète derrière le curseur.
+if (window.matchMedia('(pointer: fine)').matches) {
+  const trail = [];
+  const trailLimit = 10;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let lastMoveAt = performance.now();
+
+  for (let i = 0; i < trailLimit; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'mouse-trail';
+    dot.style.opacity = '0';
+    document.body.appendChild(dot);
+    trail.push({
+      el: dot,
+      x: mouseX,
+      y: mouseY,
+      scale: 1 - (i / trailLimit) * 0.45
+    });
+  }
+
+  function updateMouseTrail() {
+    const isIdle = performance.now() - lastMoveAt > 60;
+    let targetX = mouseX;
+    let targetY = mouseY;
+
+    trail.forEach((point, index) => {
+      const follow = index === 0 ? 0.32 : 0.22 + index * 0.04;
+      const dx = targetX - point.x;
+      const dy = targetY - point.y;
+      point.x += dx * follow;
+      point.y += dy * follow;
+
+      const distance = Math.hypot(mouseX - point.x, mouseY - point.y);
+      const opacity = isIdle ? (distance < 2 ? 0 : 0.18) : Math.max(0, 0.9 - index * 0.08);
+
+      point.el.style.left = `${point.x}px`;
+      point.el.style.top = `${point.y}px`;
+      point.el.style.opacity = String(opacity);
+      point.el.style.transform = `translate(-50%, -50%) scale(${point.scale})`;
+
+      targetX = point.x;
+      targetY = point.y;
+    });
+
+    requestAnimationFrame(updateMouseTrail);
+  }
+
+  document.addEventListener('pointermove', (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    lastMoveAt = performance.now();
+
+    trail.forEach((point, index) => {
+      point.el.style.opacity = String(Math.max(0, 0.9 - index * 0.08));
+    });
+  });
+
+  document.addEventListener('pointerleave', () => {
+    trail.forEach(point => {
+      point.el.style.opacity = '0';
+    });
+  });
+
+  requestAnimationFrame(updateMouseTrail);
+}
+
 // Regroupe les outils par niveau de maîtrise pour les afficher par catégorie.
 const CATS = [
   { key:"mastered",     label:"Maîtrise",     color:"var(--lavender)" },
@@ -88,7 +155,16 @@ function renderProjects(projects) {
       gsap.to(glow, { opacity:0, scale:.5, duration:.5 });
       gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.25 });
     });
-    if(p.hasPage) card.addEventListener('click', () => openProject(p.id));
+    const shouldOpenContact = p.title === 'Notre projet';
+    if (p.hasPage || shouldOpenContact) {
+      card.addEventListener('click', () => {
+        if (shouldOpenContact) {
+          scrollToId('contact');
+          return;
+        }
+        openProject(p.id);
+      });
+    }
     grid.appendChild(card);
   });
 }
@@ -261,12 +337,85 @@ const projEl    = document.getElementById('page-project');
 const navEl     = document.getElementById('bottom-nav');
 const projNavEl = document.getElementById('proj-nav');
 const projTopBack = document.getElementById('proj-top-back');
+let projectRevealObserver = null;
+
+function updateProjectHeroParallax() {
+  const hero = projEl?.querySelector('.proj-hero');
+  const img = hero?.querySelector('img');
+  const text = hero?.querySelector('.proj-hero-text');
+
+  if (!hero || !img) return;
+
+  const scrollAmount = projEl.scrollTop || 0;
+  const baseShift = -28;
+  const imageOffset = Math.min(scrollAmount * 0.18, 70);
+  const textOffset = Math.min(scrollAmount * 0.08, 18);
+
+  img.style.transform = `scale(1.16) translate3d(0, ${baseShift + imageOffset}px, 0)`;
+  if (text) {
+    text.style.transform = `translate3d(0, ${textOffset}px, 0)`;
+  }
+}
+
+function setupSectionReveal(root, selector, delayStep = 40) {
+  const items = root.querySelectorAll(selector);
+  items.forEach((el, index) => {
+    el.classList.add('reveal-on-load');
+    el.style.transitionDelay = `${index * delayStep}ms`;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { root, threshold: 0.15 });
+
+  items.forEach((el) => observer.observe(el));
+}
+
+function setupProjectScrollReveal() {
+  if (projectRevealObserver) {
+    projectRevealObserver.disconnect();
+  }
+
+  const targets = projEl.querySelectorAll(
+    '.resumé-block, .meta-card, .desc-block, .carousel, #ph-video-wrap, #ph-process-wrap, #ph-sources, .cta-section, .process-section, .source-card'
+  );
+
+  targets.forEach((el, index) => {
+    el.classList.add('project-reveal');
+    el.style.transitionDelay = `${index * 35}ms`;
+  });
+
+  projectRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        projectRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: projEl,
+    threshold: 0.18
+  });
+
+  targets.forEach((el) => projectRevealObserver.observe(el));
+}
+
+projEl.addEventListener('scroll', () => {
+  if (!projEl.classList.contains('hidden')) {
+    updateProjectHeroParallax();
+  }
+}, { passive: true });
 
 function openProject(projectId) {
   if(busy) return; busy = true;
   PROJECT_DETAIL = PROJECT_DETAILS[String(projectId)] || (projectId === 1 ? FEATURED_PROJECT_DETAIL : null);
   fillProject();
-  gsap.timeline({ onComplete: () => { busy=false; bindBubbles(projEl); } })
+  gsap.timeline({ onComplete: () => { busy=false; bindBubbles(projEl); updateProjectHeroParallax(); } })
     .to([homeEl, navEl], { opacity:0, y:-18, duration:.22, ease:'power2.in' })
     .call(() => {
       homeEl.classList.add('hidden'); navEl.style.display = 'none';
@@ -498,11 +647,14 @@ function fillProject() {
     preview: 'gallery-archive-preview',
   });
   buildGalleryPreview(p.imagesArchive, 'gallery-archive-preview');
+  setupProjectScrollReveal();
 }
 
 // Petites animations d'entrée au chargement pour rendre la page plus vivante.
-gsap.from('.hero-badge', { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.2 });
-gsap.from('.hero-title', { opacity:0, y:40, duration:.8, ease:'power3.out', delay:.4 });
-gsap.from('.hero-sub',   { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.65 });
-gsap.from('.hero-btns',  { opacity:0, y:20, duration:.6, ease:'power3.out', delay:.85 });
-gsap.from('#bottom-nav', { opacity:0, y:30, duration:.6, ease:'back.out(1.5)', delay:1.1 });
+gsap.from('.hero-badge', { opacity:0, y:12, duration:.38, ease:'power3.out', delay:.12 });
+gsap.from('.hero-title', { opacity:0, y:24, duration:.48, ease:'power3.out', delay:.22 });
+gsap.from('.hero-sub',   { opacity:0, y:12, duration:.38, ease:'power3.out', delay:.36 });
+gsap.from('.hero-btns',  { opacity:0, y:12, duration:.38, ease:'power3.out', delay:.48 });
+gsap.from('#bottom-nav', { opacity:0, y:16, duration:.4, ease:'back.out(1.5)', delay:.6 });
+
+setupSectionReveal(homeEl, '#work .proj-card, #skills .tools-category, #about .about-panel, #contact .contact-card', 30);
