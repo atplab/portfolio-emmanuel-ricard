@@ -600,8 +600,20 @@ function fillProject() {
   }
 
   const videoWrap = document.getElementById('ph-video-wrap');
-  document.getElementById('ph-video').src = p.youtubeId ? `https://www.youtube.com/embed/${p.youtubeId}` : '';
-  videoWrap.style.display = p.youtubeId ? 'block' : 'none';
+  const video = document.getElementById('ph-video');
+  const videoFrame = video.closest('.video-frame');
+  const videoSrc = p.vimeoId
+    ? `https://player.vimeo.com/video/${p.vimeoId}`
+    : p.youtubeId
+      ? `https://www.youtube.com/embed/${p.youtubeId}`
+      : '';
+  const videoWidth = Number(p.videoWidth) || 16;
+  const videoHeight = Number(p.videoHeight) || 9;
+  videoFrame.style.setProperty('--video-aspect-ratio', `${videoWidth} / ${videoHeight}`);
+  videoFrame.dataset.videoOrientation = videoWidth < videoHeight ? 'portrait' : 'landscape';
+  video.src = videoSrc;
+  video.title = `Vidéo du projet ${p.nom}`;
+  videoWrap.style.display = videoSrc ? 'block' : 'none';
 
   const processWrap = document.getElementById('ph-process-wrap');
   const processGallery = document.getElementById('ph-process-gallery');

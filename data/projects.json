@@ -98,6 +98,9 @@
     },
     "lien": "",
     "youtubeId": "",
+    "vimeoId": "1234806287",
+    "videoWidth": 240,
+    "videoHeight": 426,
     "heroImg": "./assets/Cheqa/7.page_connexion.webp",
     "images": [
       "./assets/Cheqa/1.accueil_final.webp",
@@ -133,7 +136,10 @@
       "descProf": "Le but du projet était de créer un jeu vidéo contenant 3 niveaux. Le type de jeu était libre.",
       "descPerso": "J'ai conçu un jeu de plateforme en 2D dans Godot, en me concentrant sur le game-feel des sauts et le design progressif des niveaux. Chaque niveau introduit une nouvelle mécanique pour garder le joueur engagé.",
       "lien": "https://eureka-altima.itch.io/this-is-why-we-jump",
-      "youtubeId": "QjrEutFNhsg",
+      "youtubeId": "",
+      "vimeoId": "1233175500",
+      "videoWidth": 426,
+      "videoHeight": 240,
       "heroImg": "./assets/This is why we jump!/This is why we jump_nouveaute.webp",
       "images": [
         "./assets/This is why we jump!/This is why we jump_nouveaute.webp",
@@ -157,6 +163,9 @@
       "descPerso": "J'ai créé un jeu de course en réalité virtuelle, où trois lignes sont présentes. Le joueur doit changer entre ces trois lignes pour esquiver les obstacles alors qu'il avance automatiquement. J'ai conçu le niveau, placé les objets, codé le fonctionnement du jeu et réalisé ce monde qui plonge le joueur dans une ambiance agréable à regarder. Le jeu complet contient un sélecteur de niveaux et deux autres mondes, qui ont été faits par mes coéquipières.",
       "lien": "",
       "youtubeId": "",
+      "vimeoId": "1234800147",
+      "videoWidth": 426,
+      "videoHeight": 240,
       "heroImg": "./assets/space in between/vue_densemble.webp",
       "images": [
         "./assets/space in between/vue_densemble.webp",
@@ -187,6 +196,9 @@
       "descPerso": "J'ai fait des animations fluides, des boutons interactifs, une page dynamique et visuellement agréable à regarder. Tout est facile à comprendre, avec des catégories qui se suivent graphiquement.",
       "lien": "",
       "youtubeId": "",
+      "vimeoId": "1234802737",
+      "videoWidth": 426,
+      "videoHeight": 240,
       "heroImg": "./assets/Kombucha Vibe/header.webp",
       "images": [
         "./assets/Kombucha Vibe/header.webp",
