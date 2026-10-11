@@ -1,5 +1,5 @@
 ## 1. Gestion des données 🗂️¶
-Je veux stocker mes données dans une base de données en ligne (gratuite), qui sera sûrement airtable.
+Je veux stocker mes données avec Json.
 
 ## 2. Animations 🎬
 
@@ -11,4 +11,4 @@ Multipages avec paramètre d'URL
 La page d'accueil liste les projets (cartes), chacune pointant vers une page comme projet.html?id=cafe-du-coin. La page projet lit ce paramètre dans l'URL et va chercher, dans le même JSON (ou la même source), les données du projet correspondant pour les afficher.
 
 ## 4. Hébergement 🌐
-Je vais héberger mon site internet à l'aide de Netlify.
+Je vais héberger mon site internet à l'aide de Github.
