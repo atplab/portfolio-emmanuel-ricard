@@ -102,6 +102,24 @@ Copilot
 ## Résultat :
 La page de projet est désormais plus agréable et intuitive à regarder. J'ai aussi complété les pages de mes projets, et fait des modifications pour rendre le tout plus esthétique.
 
+# Date :
+2026-10-09
+## Prompt :
+Lorsque ma souris bouge, faire une trainée d'orbes qui se cache lorsque la souris ne bouge pas derrière la souris.
+## Outil :
+Copilot
+## Résultat :
+J'ai désormais une animation au mouvement de la souris, tout en ayant de la parallaxe sur les pages de projets, et des animations de fade in lorsque je descend dans la page.
+
+# Date :
+2026-10-11
+## Prompt :
+dans la page de profil, faire en sorte que la vidéo soit relié à ce lien : "lien de la vidéo".
+## Outil :
+Copilot
+## Résultat :
+Les vidéos sont désormais visionnable sur la page des projets.
+
 <br>
 <br>
 <br>
