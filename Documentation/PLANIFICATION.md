@@ -7,8 +7,9 @@ Je veux stocker mes données avec Json.
 - **Type d'animation :** fondu entre les pages, zoom lors de survol, déplacement de fond des bulles en arrière-plan.
 - **Déclencheur :** défilement d'une section à l'autre, survol d'éléments comme les boutons.
 ## 3. Structure de navigation 🧭
-Multipages avec paramètre d'URL
-La page d'accueil liste les projets (cartes), chacune pointant vers une page comme projet.html?id=cafe-du-coin. La page projet lit ce paramètre dans l'URL et va chercher, dans le même JSON (ou la même source), les données du projet correspondant pour les afficher.
+One-pager avec pop-up.
+
+Toutes les données sont chargées une seule fois au chargement de la page. Un clic sur un projet ouvre une fenêtre modale (ex. l'élément natif <dialog>) qui affiche le détail en plus gros plan, sans changer de page.
 
 ## 4. Hébergement 🌐
-Je vais héberger mon site internet à l'aide de Github.
+Je vais héberger mon site internet à l'aide de GitHub Pages.
