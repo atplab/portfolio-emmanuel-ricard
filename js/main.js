@@ -259,14 +259,6 @@ function resumeMusicAfterVideo() {
   });
 }
 
-function tryStartPageMusic() {
-  pageMusic.play().catch(error => {
-    // Les navigateurs peuvent bloquer l'autoplay tant qu'aucune interaction
-    // utilisateur n'a eu lieu ; le bouton reste disponible dans ce cas.
-    console.warn('Lecture automatique bloquée par le navigateur :', error.name);
-  });
-}
-
 musicToggle.addEventListener('click', () => {
   if (pageMusic.paused) {
     pageMusic.play().catch(error => {
@@ -285,7 +277,6 @@ pageMusic.addEventListener('play', updateMusicControls);
 pageMusic.addEventListener('pause', updateMusicControls);
 pageMusic.addEventListener('ended', updateMusicControls);
 updateMusicControls();
-tryStartPageMusic();
 
 // Met la musique en pause dès qu'une vidéo intégrée reçoit une interaction.
 document.addEventListener('click', event => {
