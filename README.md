@@ -1,12 +1,12 @@
 # portfolio-emmanuel-ricard
 
-Emmanuel Ricard
+**Emmanuel Ricard**
 
 Technique d'intégration Multimédia, collège Montmorency
 
-ricard.emmanuel@pm.me
+**Adresse courriel : ricard.emmanuel@pm.me**
 
-https://atplab.github.io/portfolio-emmanuel-ricard/
+**Lien du portfolio : https://atplab.github.io/portfolio-emmanuel-ricard/**
 
 **Lien Figma Make : https://www.figma.com/make/P1hrLVR2Mh1vfWlxI9AdUU/Cr%C3%A9er-un-portfolio-moderne?t=OAELjIpXFj7P6RBR-1**
 

@@ -114,11 +114,20 @@ J'ai désormais une animation au mouvement de la souris, tout en ayant de la par
 # Date :
 2026-10-11
 ## Prompt :
-dans la page de profil, faire en sorte que la vidéo soit relié à ce lien : "lien de la vidéo".
+dans la page de projet, faire en sorte que la vidéo soit relié à ce lien : "lien de la vidéo".
 ## Outil :
 Copilot
 ## Résultat :
 Les vidéos sont désormais visionnable sur la page des projets.
+
+# Date :
+2026-10-12
+## Prompt :
+dans la page de projet, faire en sorte que le survol d'éléments, tel que les informations du projet, soit plus fluide et sans latence.
+## Outil :
+Copilot
+## Résultat :
+Les éléments du site sont désormais plus fluide, les animations plus dynamiques, et le lecteur de musique s'arrête lorsqu'une vidéo joue.
 
 <br>
 <br>
@@ -144,3 +153,25 @@ Ma prochaine étape concrète est de créer ma maquette à l'aide de VS Code, po
 **5 - Est-ce que j'ai utilisé l'IA? Si oui, pour quoi et qu'est-ce que ça m'a appris?**
 
 Oui j'ai utilisé l'IA, il m'a appris de différentes manières de visualiser mon site internet, avec un oeil extérieur. Il m'a permi de rendre mon site ce qu'il sera, car à la base, j'avais une idée différente de design pour mon site.
+
+<br>
+
+**1- Qu'est-ce que j'ai accompli depuis le dernier bloc?**
+
+J'ai rendu mon portfolio complet, sur github, avec tout les éléments et l'optimisation voulu. J'ai finalisé ce que je voulais avoir comme rendu, et j'en suis satisfait.
+
+**2 - Quelle a été ma principale difficulté et comment je l'ai surmontée?**
+
+Ma principale difficulté était d'optimiser le site pour le rendre fluide et sans latence, mais l'essaie erreur du code et l'aide de l'IA m'a aidé à surmonter mes problèmes.
+
+**3 - Qu'est-ce que j'ai appris que je ne savais pas avant?**
+
+J'ai appris à bien utiliser Json, à comprendre son fonctionnement et comment bien l'utiliser.
+
+**4 - Si j'avais une semaine de plus, qu'est-ce que je changerais?**
+
+Rien, mon portfolio est à mon goût et complet. Je ne changerais rien, sauf rajouter et créer un favicon.
+
+**5 - Est-ce que j'ai utilisé l'IA? Si oui, pour quoi et qu'est-ce que ça m'a appris?**
+
+Oui j'ai utilisé l'IA, il m'a aidé à comprendre comment animer et optimiser mon site internet, ce qui me permettra de rendre mes futurs sites internets plus optimaux et plus agréable à consulter.
