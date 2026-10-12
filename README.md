@@ -4,7 +4,7 @@ Emmanuel Ricard
 
 Technique d'intégration Multimédia, collège Montmorency
 
-ricard.emmanuel@pm.me
+**Adresse courriel : ricard.emmanuel@pm.me**
 
 **Lien du portfolio : https://atplab.github.io/portfolio-emmanuel-ricard/**
 
