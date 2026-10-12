@@ -1,4 +1,12 @@
-// ── Données de base utilisées pour remplir les sections du portfolio ──
+/*
+ * ==========================================================================
+ * Logique principale du portfolio
+ * Organisation : données, rendu, navigation, transitions et médias projet.
+ * ==========================================================================
+ */
+
+// ── Données et état de l'application ─────────────────────────────────────
+// Ces constantes alimentent les sections générées dynamiquement.
 const TOOLS = [
   { name:"Figma",                 level:"mastered" },
   { name:"DaVinci Resolve",       level:"mastered" },
@@ -27,6 +35,7 @@ let PROJECT_DETAIL = null;
 let PROJECT_DETAILS = {};
 let FEATURED_PROJECT_DETAIL = null;
 
+// ── Décor et effets du pointeur ───────────────────────────────────────────
 // Génère l'arrière-plan étoilé de manière procédurale.
 const starsEl = document.getElementById('stars');
 for(let i=0;i<120;i++){
@@ -63,11 +72,10 @@ if (window.matchMedia('(pointer: fine)').matches) {
     let targetY = mouseY;
 
     trail.forEach((point, index) => {
+      // Chaque point suit la position de la souris ou du point précédent.
       const follow = index === 0 ? 0.32 : 0.22 + index * 0.04;
-      const dx = targetX - point.x;
-      const dy = targetY - point.y;
-      point.x += dx * follow;
-      point.y += dy * follow;
+      point.x += (targetX - point.x) * follow;
+      point.y += (targetY - point.y) * follow;
 
       const distance = Math.hypot(mouseX - point.x, mouseY - point.y);
       const opacity = isIdle ? (distance < 2 ? 0 : 0.18) : Math.max(0, 0.9 - index * 0.08);
@@ -103,6 +111,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
   requestAnimationFrame(updateMouseTrail);
 }
 
+// ── Rendu des outils et des projets ───────────────────────────────────────
 // Regroupe les outils par niveau de maîtrise pour les afficher par catégorie.
 const CATS = [
   { key:"mastered",     label:"Maîtrise",     color:"var(--lavender)" },
@@ -146,14 +155,17 @@ function renderProjects(projects) {
     const glow = card.querySelector('.proj-card-glow');
     const link = card.querySelector('.proj-link');
     card.addEventListener('mouseenter', () => {
-      gsap.to(card, { scale:1.03, y:-6, duration:.45, ease:'back.out(1.7)' });
-      gsap.to(glow, { opacity:1, scale:1.5, duration:.5 });
-      gsap.to(link, { color:p.accent, duration:.25 });
+      // Interrompt l'animation précédente pour que la réaction reste immédiate.
+      gsap.killTweensOf([card, glow, link]);
+      gsap.to(card, { scale:1.03, y:-6, duration:.18, ease:'power2.out' });
+      gsap.to(glow, { opacity:1, scale:1.5, duration:.18, ease:'power2.out' });
+      gsap.to(link, { color:p.accent, duration:.12, ease:'power2.out' });
     });
     card.addEventListener('mouseleave', () => {
-      gsap.to(card, { scale:1, y:0, duration:.45, ease:'back.out(1.7)' });
-      gsap.to(glow, { opacity:0, scale:.5, duration:.5 });
-      gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.25 });
+      gsap.killTweensOf([card, glow, link]);
+      gsap.to(card, { scale:1, y:0, duration:.18, ease:'power2.out' });
+      gsap.to(glow, { opacity:0, scale:.5, duration:.18, ease:'power2.out' });
+      gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.12, ease:'power2.out' });
     });
     const shouldOpenContact = p.title === 'Notre projet';
     if (p.hasPage || shouldOpenContact) {
@@ -176,15 +188,30 @@ function renderProjectSwitcher(projects) {
   projects.forEach(p => {
     const card = document.createElement('div');
     card.className = 'switcher-card';
+    const detail = PROJECT_DETAILS[String(p.id)] || (p.id === 1 ? FEATURED_PROJECT_DETAIL : null);
+    const thumbnailStyle = detail?.heroImg
+      ? `background-image:url('${detail.heroImg}');background-size:cover;background-position:center;`
+      : `background:${p.grad}`;
     card.innerHTML = `
-      <div class="switcher-thumb"><div class="switcher-thumb-bg" style="background:${p.grad}"></div><div class="switcher-thumb-overlay"></div></div>
+      <div class="switcher-thumb"><div class="switcher-thumb-bg" style="${thumbnailStyle}"></div><div class="switcher-thumb-overlay"></div></div>
       <div class="switcher-info"><div class="switcher-cat" style="color:${p.accent}">${p.cat}</div><div class="switcher-title">${p.title}</div></div>
       <span class="switcher-badge" style="${p.hasPage ? '' : 'opacity:.4'}">${p.hasPage ? 'Voir →' : 'Bientôt'}</span>`;
-    if(p.hasPage) card.addEventListener('click', () => { switcherMenu.classList.remove('open'); openProject(p.id); });
+    if (p.hasPage || p.title === 'Notre projet') {
+      card.addEventListener('click', () => {
+        switcherMenu.classList.remove('open');
+        if (p.title === 'Notre projet') {
+          // Retourne à l'accueil avant d'atteindre la section Contact.
+          goHome(() => scrollToId('contact'));
+          return;
+        }
+        openProject(p.id);
+      });
+    }
     switcherList.appendChild(card);
   });
 }
 
+// Charge les données avant de construire les cartes et le sélecteur de projets.
 const projectsDataPromise = window.projectsDataPromise || Promise.reject(new Error('projectsDataPromise is not available'));
 
 projectsDataPromise
@@ -201,12 +228,23 @@ projectsDataPromise
     grid.innerHTML = '<p class="body-text">Impossible de charger les projets.</p>';
   });
 
-// Ajoute un léger effet d'agrandissement sur les éléments décorés en .bubble.
+// ── Interactions et navigation de la page d'accueil ───────────────────────
+// Ajoute un agrandissement immédiat aux éléments décorés en .bubble.
 function bindBubbles(root) {
   root.querySelectorAll('.bubble').forEach(el => {
     if(el._b) return; el._b = true;
-    el.addEventListener('mouseenter', () => gsap.to(el, { scale:1.09, duration:.3, ease:'back.out(1.7)' }));
-    el.addEventListener('mouseleave', () => gsap.to(el, { scale:1,    duration:.3, ease:'back.out(1.7)' }));
+    // Les éléments de la page projet utilisent un survol CSS direct, comme
+    // les miniatures du carrousel, pour éviter le conflit entre animations.
+    if (el.closest('#page-project')) return;
+    el.addEventListener('mouseenter', () => {
+      // Supprime toute animation restante avant de lancer le nouvel état.
+      gsap.killTweensOf(el);
+      gsap.to(el, { scale:1.09, duration:.16, ease:'power2.out' });
+    });
+    el.addEventListener('mouseleave', () => {
+      gsap.killTweensOf(el);
+      gsap.to(el, { scale:1, duration:.16, ease:'power2.out' });
+    });
   });
 }
 bindBubbles(document);
@@ -322,6 +360,7 @@ document.addEventListener('keydown', e => {
   window.setTimeout(() => focusSection(nextSectionId), 180);
 });
 
+// ── Navigation de la page projet ──────────────────────────────────────────
 // Ouvre / ferme le menu qui permet de changer de projet rapidement.
 const switcherMenu = document.getElementById('proj-switcher-menu');
 const switcherBtn  = document.getElementById('proj-switcher-btn');
@@ -413,6 +452,7 @@ projEl.addEventListener('scroll', () => {
 
 function openProject(projectId) {
   if(busy) return; busy = true;
+  stopProjectVideo();
   PROJECT_DETAIL = PROJECT_DETAILS[String(projectId)] || (projectId === 1 ? FEATURED_PROJECT_DETAIL : null);
   fillProject();
   gsap.timeline({ onComplete: () => { busy=false; bindBubbles(projEl); updateProjectHeroParallax(); } })
@@ -427,9 +467,18 @@ function openProject(projectId) {
     .to(projNavEl, { opacity:1, y:0, duration:.35, ease:'back.out(1.5)' }, '-=.2');
 }
 
-function goHome() {
+// Décharge la vidéo intégrée pour empêcher sa lecture lorsque la page projet
+// est masquée ou lorsqu'un autre projet est ouvert.
+function stopProjectVideo() {
+  const video = document.getElementById('ph-video');
+  if (!video) return;
+  video.src = 'about:blank';
+}
+
+function goHome(onComplete) {
   if(busy) return; busy = true;
-  gsap.timeline({ onComplete: () => { busy=false; } })
+  stopProjectVideo();
+  gsap.timeline({ onComplete: () => { busy=false; onComplete?.(); } })
     .to([projEl, projNavEl], { opacity:0, y:-18, duration:.22, ease:'power2.in' })
     .call(() => {
       projEl.classList.add('hidden'); projNavEl.style.display = 'none';
@@ -444,6 +493,7 @@ function goHome() {
 document.getElementById('proj-nav-back').addEventListener('click', goHome);
 projTopBack.addEventListener('click', goHome);
 
+// ── Carrousels, galeries et lightbox ──────────────────────────────────────
 // Gère les carrousels d'images avec navigation et auto-défilement.
 const carouselTimers = {};
 
@@ -456,6 +506,9 @@ function initCarousel(images, ids = {}) {
   const previewContainer = document.getElementById(ids.preview || (key === 'ph-carousel-archive' ? 'gallery-archive-preview' : 'gallery-preview'));
   clearInterval(carouselTimers[key]);
   track.innerHTML = dots.innerHTML = '';
+  // Le rail est réutilisé entre les projets : il doit toujours repartir de
+  // la première image au lieu de conserver la position du projet précédent.
+  track.style.transform = 'translateX(0%)';
   if(!images?.length) { wrap.style.display = 'none'; return; }
   wrap.style.display = 'block';
   let idx = 0;
@@ -509,6 +562,7 @@ function initCarousel(images, ids = {}) {
 
   document.getElementById(ids.prev || 'carousel-prev').onclick = () => { goTo(idx - 1); resetTimer(); };
   document.getElementById(ids.next || 'carousel-next').onclick = () => { goTo(idx + 1); resetTimer(); };
+  goTo(0);
   resetTimer();
 }
 
@@ -564,6 +618,7 @@ function openLightbox(images, start = 0) {
   requestAnimationFrame(() => lb.classList.add('open'));
 }
 
+// ── Remplissage de la page projet ──────────────────────────────────────────
 // Injecte dans la page projet les données correspondant au projet sélectionné.
 function fillProject() {
   const p = PROJECT_DETAIL;
@@ -618,12 +673,16 @@ function fillProject() {
   const processWrap = document.getElementById('ph-process-wrap');
   const processGallery = document.getElementById('ph-process-gallery');
   const processData = p.process || null;
+  processGallery.classList.toggle('cheqa-process-gallery', p.nom === 'CHEQA');
   if (processData?.steps?.length) {
     const processImages = Array.isArray(processData.images) ? processData.images : [];
     const processSlots = processImages.length ? processImages : [null, null, null, null];
     processGallery.innerHTML = processSlots.map((src, index) => src
       ? `<button type="button" class="process-photo" data-process-photo="${index}"><img src="${src}" alt="Processus de création - photo ${index + 1}" loading="lazy"></button>`
       : `<div class="process-photo process-photo--empty" aria-hidden="true"><span>Photo ${index + 1}</span></div>`).join('');
+    processGallery.querySelectorAll('[data-process-photo]').forEach((photo, index) => {
+      photo.addEventListener('click', () => openLightbox(processImages, index));
+    });
     processWrap.style.display = 'block';
   } else {
     processWrap.style.display = 'none';

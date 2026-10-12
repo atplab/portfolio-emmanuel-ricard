@@ -1,4 +1,10 @@
-/* Base globale : remet les marges à zéro et garde un calcul de taille prévisible. */
+/* ==========================================================================
+   Styles de base et sections communes
+   Normalisation, accessibilité, structure des pages et sections d'accueil.
+   ========================================================================== */
+
+/* ── Réinitialisation et règles globales ───────────────────────────────── */
+/* Garantit un calcul de dimensions prévisible et une base cohérente. */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
@@ -102,12 +108,13 @@ body, button, a {
   font-family: var(--fd);
 }
 
-/* Pages en plein écran : une page d'accueil et une page projet. */
+/* ── Conteneurs de pages ───────────────────────────────────────────────── */
+/* Deux vues plein écran sont utilisées : l'accueil et le détail projet. */
 .page { position: fixed; inset: 0; z-index: 1; overflow-y: auto; overflow-x: hidden; scroll-snap-type: y mandatory; }
 .page.hidden { display: none; }
 
 
-/* Section d'accueil principale. */
+/* ── Section d'accueil ─────────────────────────────────────────────────── */
 #hero {
   min-height: 100vh; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
@@ -144,7 +151,7 @@ body, button, a {
 }
 @keyframes pulse-line { 0%,100%{opacity:.3} 50%{opacity:.8} }
 
-/* Styles des boutons principaux du site. */
+/* ── Boutons d'action ──────────────────────────────────────────────────── */
 .btn-primary {
   padding: 16px 32px; border-radius: 9999px; border: none;
   background: linear-gradient(135deg,#c4a8ff,#ff8fd4);
@@ -160,7 +167,7 @@ body, button, a {
   text-decoration: none; display: inline-block;
 }
 
-/* Grille des projets sur la page d'accueil. */
+/* ── Grille des projets ────────────────────────────────────────────────── */
 #work {
   padding: 80px 24px;
   min-height: 100vh;
@@ -181,7 +188,7 @@ body, button, a {
 @media(min-width:640px) { .projects-grid { grid-template-columns: repeat(2,1fr); } }
 @media(min-width:1024px){ .projects-grid { grid-template-columns: repeat(3,1fr); } }
 
-/* Bloc de présentation personnelle. */
+/* ── Section « À propos » ──────────────────────────────────────────────── */
 #about { padding: 112px 24px; min-height: 100vh; display: flex; align-items: center; scroll-snap-align: start; }
 .about-grid {
   display: grid;
@@ -256,7 +263,7 @@ body, button, a {
 .stat-label { font-size: .75rem; color: rgba(255,255,255,.7); margin-top: 4px; }
 
 
-/* Liste des outils classés par niveau. */
+/* ── Compétences et outils ─────────────────────────────────────────────── */
 #skills { padding: 80px 24px; min-height: 100vh; display: flex; align-items: center; scroll-snap-align: start; }
 .tools-box {
   max-width: 960px; margin: 0 auto; position: relative; overflow: hidden;
@@ -298,7 +305,7 @@ body, button, a {
 }
 
 
-/* ── Contact ───────────────────────────────────────────────────── */
+/* ── Section Contact ───────────────────────────────────────────────────── */
 #contact { padding: 112px 24px 40px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
 .contact-card {
   max-width: 720px; margin: 0 auto; border-radius: 2.5rem;
@@ -344,7 +351,7 @@ body, button, a {
 }
 
 
-/* ── page de projet ──────────────────────────────────────────────── */
+/* ── Page de détail d'un projet ───────────────────────────────────────── */
 .back-btn {
   position: fixed; top: 24px; left: 24px; z-index: 50;
   display: flex; align-items: center; gap: 8px;
@@ -460,6 +467,27 @@ body, button, a {
   opacity: 1;
   transform: translateY(0);
 }
+/* Après l'apparition, les éléments peuvent être survolés sans que la
+   transition d'entrée de .project-reveal ralentisse l'effet .bubble. */
+.project-reveal.is-visible.bubble {
+  transition: opacity .38s ease, transform .2s ease;
+}
+/* Les cartes interactives de la page projet réagissent directement au survol,
+   sans attendre une animation JavaScript déclenchée après coup. */
+#page-project .meta-card,
+#page-project .desc-block,
+#page-project .process-section {
+  transform-origin: center;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  transition-delay: 0s !important;
+  will-change: transform;
+}
+#page-project .meta-card:hover,
+#page-project .desc-block:hover,
+#page-project .process-section:hover {
+  transition-delay: 0s !important;
+  transform: translateY(-3px) scale(1.04);
+}
 
 .reveal-on-load {
   opacity: 0;
@@ -537,15 +565,27 @@ body, button, a {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
+  padding: 0;
   border-radius: 1rem;
   overflow: hidden;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.08);
+  cursor: pointer;
+  transition: transform .2s, border-color .2s, box-shadow .2s, opacity .2s;
+}
+.process-photo:hover {
+  transform: translateY(-2px);
+  border-color: rgba(196,168,255,.45);
+  box-shadow: 0 12px 24px rgba(196,168,255,.14);
+}
+.process-gallery.cheqa-process-gallery .process-photo {
+  aspect-ratio: 16 / 9;
 }
 .process-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: zoom-in;
 }
 .process-photo--empty {
   display: grid;

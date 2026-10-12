@@ -1,10 +1,14 @@
 <!doctype html>
+<!-- ==========================================================================
+     Structure principale du portfolio
+     Organisation : décor global, accueil, page projet, navigations et scripts.
+     ========================================================================== -->
 <html lang="fr">
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emmanuel Ricard — Designer Graphique</title>
+  <title>Emmanuel Ricard — Designer Interactif</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -18,21 +22,22 @@
 </head>
 <body>
 
-<!-- Fond animé du site : étoiles + orbes lumineux -->
+<!-- ── Décor d'arrière-plan ───────────────────────────────────────────── -->
+<!-- Le décor reste indépendant du contenu et est généré en partie par main.js. -->
 <div id="stars"></div>
-<!-- Orbes décoratifs placés en arrière-plan -->
+<!-- Halos lumineux statiques placés derrière les pages. -->
 <div class="orb" style="width:600px;height:600px;background:#7c3aed;top:-200px;left:-100px"></div>
 <div class="orb" style="width:500px;height:500px;background:#ec4899;top:40%;right:-150px"></div>
 <div class="orb" style="width:400px;height:400px;background:#06b6d4;bottom:10%;left:20%"></div>
 
-<!-- ══ ACCUEIL ══════════════════════════════════════════════════════════ -->
+<!-- ── Page d'accueil ──────────────────────────────────────────────────── -->
 <div id="page-home" class="page">
 
-  <!-- Accueil : présentation principale et accès rapide aux sections -->
+  <!-- Section d'introduction et accès rapides vers les autres sections. -->
   <section id="hero">
     <div class="hero-badge">✦ Disponible pour projets & stages</div>
     <h1 class="hero-title">Emmanuel<br>Ricard</h1>
-    <p class="hero-sub">Designer graphique passionné par l'identité visuelle et la direction artistique.</p>
+    <p class="hero-sub">Designer interactif passionné par l'identité visuelle et la direction artistique.</p>
     <div class="hero-btns">
       <button class="btn-primary bubble" onclick="scrollToId('work')">Voir mes travaux →</button>
       <button class="btn-ghost  bubble" onclick="scrollToId('contact')">Me contacter</button>
@@ -40,7 +45,7 @@
     <div class="scroll-hint"><div class="scroll-line"></div>Défiler</div>
   </section>
 
-  <!-- Grille des projets cliquables -->
+  <!-- Grille des projets générée dynamiquement par main.js. -->
   <section id="work">
     <div class="sec-header">
       <p class="label" style="color:var(--peach)">✦ Projets</p>
@@ -49,7 +54,7 @@
     <div class="projects-grid" id="projects-grid"></div>
   </section>
 
-  <!-- Outils et logiciels utilisés -->
+  <!-- Outils et logiciels regroupés par niveau de maîtrise. -->
   <section id="skills">
     <div class="tools-box">
       <p class="label" style="color:var(--peach)">✦ Outils</p>
@@ -58,23 +63,23 @@
     </div>
   </section>
 
-  <!-- Présentation personnelle et intention du portfolio -->
+  <!-- Présentation personnelle et intention du portfolio. -->
   <section id="about">
     <div class="about-grid">
       <div class="about-panel">
         <div class="about-card about-card--title">
           <p class="label" style="color:var(--lavender)">✦ À propos</p>
-          <h2 class="sec-title">Designer graphique, <span>créatif et curieux.</span></h2>
+          <h2 class="sec-title">Designer interactif, <span>créatif et curieux.</span></h2>
         </div>
         <div class="about-card about-card--text">
-          <p class="body-text">Je suis Emmanuel Ricard, étudiant en design graphique avec une passion pour les univers visuels forts et expressifs. Mon approche mêle rigueur typographique, sens des couleurs et une sensibilité aux tendances actuelles.</p>
-          <p class="body-text">Je cherche à rejoindre une équipe ambitieuse où je pourrai contribuer à des projets de branding, de communication ou de design numérique.</p>
+          <p class="body-text">Je suis Emmanuel Ricard, étudiant en techniques d'intégration multimédia, avec une passion pour les univers visuels forts et expressifs. Mon approche mêle rigueur artistique, création d'une expérience immersive et une sensibilité aux tendances actuelles.</p>
+          <p class="body-text">Je cherche à rejoindre une équipe ambitieuse où je pourrai contribuer à des projets de design numérique, de communication ou de branding.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Coordonnées et téléchargement du CV -->
+  <!-- Coordonnées, appel à l'action et téléchargement du CV. -->
   <section id="contact">
     <div class="contact-card">
       <p class="label" style="color:var(--lavender)">✦ Contact</p>
@@ -87,12 +92,13 @@
     </div>
 
 
-    <div class="footer">© 2026 Emmanuel Ricard — Designer Graphique</div>
+
+    <div class="footer">© 2026 Emmanuel Ricard — Designer Interactif</div>
   </section>
 </div>
-<!-- ══ PROJETS ════════════════════════════════════════════════════════ -->
+<!-- ── Page de détail d'un projet ─────────────────────────────────────── -->
 <div id="page-project" class="page hidden">
-  <!-- En-tête du projet -->
+  <!-- En-tête visuel dont le contenu est rempli par main.js. -->
   <div class="proj-hero">
     <img id="ph-img" src="" alt="" loading="lazy" />
     <div class="proj-hero-overlay"></div>
@@ -107,10 +113,10 @@
     </div>
   </div>
 
-  <!-- Séparation visuelle entre l'image bannière et le contenu du projet -->
+  <!-- Séparation visuelle entre la bannière et le contenu détaillé. -->
   <div class="proj-divider" aria-hidden="true"></div>
 
-  <!-- Contenu détaillé du projet sélectionné -->
+  <!-- Toutes les informations du projet sélectionné sont injectées ici. -->
   <div class="proj-content">
     <div class="resumé-block bubble" id="ph-resumé"></div>
 
@@ -128,7 +134,7 @@
       </div>
     </div>
 
-    <!-- Carrousels et galeries d'images du projet -->
+    <!-- Galeries principales et archives éventuelles du projet. -->
     <div id="ph-galleries">
       <div id="ph-carousel" class="carousel" style="display:none">
         <p class="label" style="color:var(--mint);margin-bottom:20px">✦ Galerie</p>
@@ -153,7 +159,7 @@
       </div>
     </div>
 
-    <!-- Vidéo intégrée du projet-->
+    <!-- Vidéo intégrée, affichée uniquement si une source est disponible. -->
     <div id="ph-video-wrap" class="video-wrap" style="display:none">
       <p class="label" style="color:var(--lavender);margin-bottom:20px">✦ Vidéo</p>
       <div class="video-frame">
@@ -161,7 +167,7 @@
       </div>
     </div>
 
-    <!-- Processus de création du projet -->
+    <!-- Étapes de conception et galerie associée au processus. -->
     <div id="ph-process-wrap" class="process-wrap" style="display:none">
       <p class="label" style="color:var(--mint);margin-bottom:20px">✦ Processus de création</p>
       <div class="process-section bubble">
@@ -193,13 +199,13 @@
       </div>
     </div>
 
-    <!-- Sources et références du projet -->
+    <!-- Sources et références affichées lorsqu'elles existent. -->
     <div id="ph-sources" class="sources-section" style="display:none">
       <p class="label" style="color:var(--lavender);margin-bottom:20px">✦ Sources</p>
       <div class="sources-grid" id="ph-sources-list"></div>
     </div>
 
-    <!-- lien vers la page externe du projet -->
+    <!-- Appel à l'action vers la page externe du projet. -->
     <div id="ph-cta" class="cta-section">
       <h2 id="ph-cta-title" class="cta-title">Expériencer le jeu</h2>
       <p id="ph-cta-sub" class="cta-sub">Disponible sur itch.io — navigateur</p>
@@ -212,7 +218,8 @@
 
 <button id="proj-top-back" class="nav-btn active proj-top-back" type="button">← Retour</button>
 
-<!-- Navigation mobile compacte -->
+<!-- ── Navigations globales ────────────────────────────────────────────── -->
+<!-- Navigation mobile compacte. -->
 <button id="burger-btn" aria-label="Menu">
   <span></span><span></span><span></span>
 </button>
@@ -224,7 +231,7 @@
   <button class="burger-item" data-target="contact">Contact</button>
 </div>
 
-<!-- Navigation principale -->
+<!-- Navigation principale de la page d'accueil. -->
 <nav id="bottom-nav">
   <button class="nav-btn active" data-target="hero">Accueil</button>
   <button class="nav-btn" data-target="work">Projets</button>
@@ -233,7 +240,7 @@
   <button class="nav-btn" data-target="contact">Contact</button>
 </nav>
 
-<!-- Navigation en vue projet -->
+<!-- Navigation spécifique à la vue détaillée d'un projet. -->
 <nav id="proj-nav">
   <button class="nav-btn active" id="proj-nav-back">← Retour</button>
   <div class="proj-nav-divider"></div>
@@ -242,12 +249,12 @@
   </button>
 </nav>
 
-<!-- Sélecteur pour passer rapidement d'un projet à l'autre -->
+<!-- Sélecteur permettant de changer rapidement de projet. -->
 <div id="proj-switcher-menu">
   <div id="proj-switcher-list"></div>
 </div>
 
-<!-- GSAP -->
+<!-- ── Dépendances et scripts ─────────────────────────────────────────── -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="./js/data.js?v=9"></script>
 <script src="./js/main.js?v=9"></script>

@@ -1,5 +1,11 @@
 
-/* Variables globales de couleurs et de typographies. */
+/* ==========================================================================
+   Variables du thème
+   Palette et familles typographiques partagées par toutes les feuilles CSS.
+   ========================================================================== */
+
+/* ── Couleurs et typographies ──────────────────────────────────────────── */
+/* Les variables évitent de dupliquer les valeurs dans les composants. */
 :root {
   --bg:       #07071a;
   --lavender: #c4a8ff;
