@@ -136,8 +136,11 @@ const grid = document.getElementById('projects-grid');
 function renderProjects(projects) {
   grid.innerHTML = '';
   projects.forEach(p => {
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.className = 'proj-card';
+    card.tabIndex = 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `Sélectionner le projet ${p.title}`);
     const detail = PROJECT_DETAILS[String(p.id)] || (p.id === 1 ? FEATURED_PROJECT_DETAIL : null);
     const heroStyle = detail?.heroImg ? `background-image:url('${detail.heroImg}');background-size:cover;background-position:${detail.nom === 'CHEQA' ? 'center top' : 'center'};` : '';
     card.innerHTML = `
@@ -168,15 +171,16 @@ function renderProjects(projects) {
       gsap.to(link, { color:'rgba(255,255,255,0.3)', duration:.12, ease:'power2.out' });
     });
     const shouldOpenContact = p.title === 'Notre projet';
-    if (p.hasPage || shouldOpenContact) {
-      card.addEventListener('click', () => {
+    card.addEventListener('click', () => {
+      selectProjectCard([...grid.querySelectorAll('.proj-card')].indexOf(card));
+      if (p.hasPage || shouldOpenContact) {
         if (shouldOpenContact) {
           scrollToId('contact');
           return;
         }
         openProject(p.id);
-      });
-    }
+      }
+    });
     grid.appendChild(card);
   });
 }
@@ -421,22 +425,83 @@ function focusSection(id) {
   section.focus({ preventScroll: true });
 }
 
+function selectProjectCard(index) {
+  const cards = [...grid.querySelectorAll('.proj-card')];
+  if (!cards.length) return;
+
+  const selectedIndex = (index + cards.length) % cards.length;
+  cards.forEach((card, cardIndex) => {
+    card.classList.toggle('is-selected', cardIndex === selectedIndex);
+  });
+
+  const selectedCard = cards[selectedIndex];
+  selectedCard.focus({ preventScroll: true });
+  selectedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
 document.addEventListener('keydown', e => {
-  // Permet de naviguer entre les sections avec Tab quand on est sur l'accueil.
-  if (e.key !== 'Tab' || e.ctrlKey || e.altKey || e.metaKey) return;
-  if (homeEl.classList.contains('hidden')) return;
+  // Permet de naviguer entre les sections avec Tab ou les flèches sur l'accueil.
+  if (!['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', 'Backspace'].includes(e.key) || e.ctrlKey || e.altKey || e.metaKey) return;
 
   const targetTag = e.target?.tagName;
   if (targetTag === 'INPUT' || targetTag === 'TEXTAREA' || targetTag === 'SELECT' || e.target?.isContentEditable) return;
 
-  const currentIndex = HOME_SECTION_IDS.indexOf(getCurrentHomeSectionId());
-  const nextIndex = e.shiftKey ? currentIndex - 1 : currentIndex + 1;
-  if (nextIndex < 0 || nextIndex >= HOME_SECTION_IDS.length) return;
+  if (!homeEl.classList.contains('hidden')) {
+    const currentIndex = HOME_SECTION_IDS.indexOf(getCurrentHomeSectionId());
 
+    if (currentIndex === HOME_SECTION_IDS.indexOf('work')) {
+      const cards = [...grid.querySelectorAll('.proj-card')];
+      const focusedIndex = cards.indexOf(document.activeElement);
+      const selectedIndex = cards.findIndex(card => card.classList.contains('is-selected'));
+      const projectIndex = focusedIndex >= 0 ? focusedIndex : selectedIndex;
+
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextProjectIndex = projectIndex >= 0
+          ? projectIndex + (e.key === 'ArrowRight' ? 1 : -1)
+          : (e.key === 'ArrowRight' ? 0 : cards.length - 1);
+        selectProjectCard(nextProjectIndex);
+        return;
+      }
+
+      if (e.key === 'Enter' && projectIndex >= 0) {
+        e.preventDefault();
+        cards[projectIndex].click();
+        return;
+      }
+    }
+
+    if (!['Tab', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    const nextIndex = e.key === 'Tab'
+      ? (e.shiftKey ? currentIndex - 1 : currentIndex + 1)
+      : (e.key === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1);
+    if (nextIndex < 0 || nextIndex >= HOME_SECTION_IDS.length) return;
+
+    e.preventDefault();
+    const nextSectionId = HOME_SECTION_IDS[nextIndex];
+    scrollToId(nextSectionId);
+    window.setTimeout(() => focusSection(nextSectionId), 180);
+    return;
+  }
+
+  if (
+    e.key === 'Tab' ||
+    projEl.classList.contains('hidden') ||
+    document.getElementById('lightbox')
+  ) return;
+
+  if (e.key === 'Backspace') {
+    e.preventDefault();
+    goHome();
+    return;
+  }
+
+  // Déplace la page projet d'un écran à la fois avec les flèches verticales.
   e.preventDefault();
-  const nextSectionId = HOME_SECTION_IDS[nextIndex];
-  scrollToId(nextSectionId);
-  window.setTimeout(() => focusSection(nextSectionId), 180);
+  projEl.scrollBy({
+    top: (e.key === 'ArrowDown' ? 1 : -1) * Math.max(projEl.clientHeight * 0.82, 320),
+    behavior: 'smooth'
+  });
 });
 
 // ── Navigation de la page projet ──────────────────────────────────────────

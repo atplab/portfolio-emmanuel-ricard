@@ -7,6 +7,12 @@
 }
 .proj-card-bg    { position: absolute; inset: 0; opacity: .58; transition: opacity .4s; }
 .proj-card:hover .proj-card-bg { opacity: .73; }
+.proj-card.is-selected {
+  box-shadow:
+    0 0 0 2px rgba(196,168,255,.9),
+    0 0 28px rgba(196,168,255,.35),
+    0 8px 32px -8px rgba(0,0,0,.5);
+}
 .proj-card-dark  { position: absolute; inset: 0; background: rgba(13,13,26,.8); backdrop-filter: blur(4px); }
 .proj-card-glow  { position: absolute; bottom: -48px; right: -48px; width: 160px; height: 160px; border-radius: 50%; filter: blur(50px); opacity: 0; transform: scale(.5); }
 .proj-card-body  { position: relative; padding: 28px; display: flex; flex-direction: column; gap: 16px; height: 100%; }
