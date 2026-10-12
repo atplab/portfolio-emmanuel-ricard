@@ -1,6 +1,6 @@
 # portfolio-emmanuel-ricard
 
-Emmanuel Ricard
+**Emmanuel Ricard**
 
 Technique d'intégration Multimédia, collège Montmorency
 
