@@ -230,6 +230,94 @@ projectsDataPromise
 
 // ── Interactions et navigation de la page d'accueil ───────────────────────
 // Ajoute un agrandissement immédiat aux éléments décorés en .bubble.
+// Contrôle la lecture manuelle de la musique d'ambiance du portfolio.
+const pageMusic = document.getElementById('page-music');
+const musicToggle = document.getElementById('music-toggle');
+const musicIcon = musicToggle.querySelector('.music-toggle__icon');
+let musicWasPlayingBeforeVideo = false;
+let musicEnabled = false;
+// Réduit le volume de la musique à 10 % de son niveau d'origine.
+pageMusic.volume = 0.1;
+
+function updateMusicControls() {
+  const isPlaying = !pageMusic.paused;
+  musicToggle.setAttribute('aria-label', isPlaying ? 'Mettre la musique en pause' : 'Lire la musique');
+  musicToggle.setAttribute('aria-pressed', String(isPlaying));
+  musicIcon.textContent = isPlaying ? 'Ⅱ' : '▶';
+}
+
+function pauseMusicForVideo() {
+  musicWasPlayingBeforeVideo = musicWasPlayingBeforeVideo || musicEnabled;
+  if (!pageMusic.paused) pageMusic.pause();
+}
+
+function resumeMusicAfterVideo() {
+  if (!musicWasPlayingBeforeVideo) return;
+  musicWasPlayingBeforeVideo = false;
+  pageMusic.play().catch(error => {
+    console.warn('Impossible de reprendre la musique :', error.name);
+  });
+}
+
+function tryStartPageMusic() {
+  pageMusic.play().catch(error => {
+    // Les navigateurs peuvent bloquer l'autoplay tant qu'aucune interaction
+    // utilisateur n'a eu lieu ; le bouton reste disponible dans ce cas.
+    console.warn('Lecture automatique bloquée par le navigateur :', error.name);
+  });
+}
+
+musicToggle.addEventListener('click', () => {
+  if (pageMusic.paused) {
+    pageMusic.play().catch(error => {
+      console.error('Impossible de lire la musique :', error);
+    });
+    return;
+  }
+  musicEnabled = false;
+  pageMusic.pause();
+});
+pageMusic.addEventListener('play', () => {
+  musicEnabled = true;
+  updateMusicControls();
+});
+pageMusic.addEventListener('play', updateMusicControls);
+pageMusic.addEventListener('pause', updateMusicControls);
+pageMusic.addEventListener('ended', updateMusicControls);
+updateMusicControls();
+tryStartPageMusic();
+
+// Met la musique en pause dès qu'une vidéo intégrée reçoit une interaction.
+document.addEventListener('click', event => {
+  if (event.target.closest?.('#ph-video')) pauseMusicForVideo();
+}, true);
+
+// Les lecteurs Vimeo et YouTube signalent aussi leur état via postMessage.
+window.addEventListener('message', event => {
+  let message = event.data;
+  if (typeof message === 'string') {
+    try {
+      message = JSON.parse(message);
+    } catch {
+      return;
+    }
+  }
+  const videoState = message?.info || message?.data || message;
+  const playerState = videoState?.playerState;
+  const eventName = message?.event || videoState?.event;
+
+  if (eventName === 'play' || eventName === 'playProgress' || playerState === 1) {
+    pauseMusicForVideo();
+  } else if (
+    eventName === 'pause' ||
+    eventName === 'finish' ||
+    playerState === 0 ||
+    playerState === 2
+  ) {
+    resumeMusicAfterVideo();
+  }
+});
+
 function bindBubbles(root) {
   root.querySelectorAll('.bubble').forEach(el => {
     if(el._b) return; el._b = true;
@@ -472,6 +560,7 @@ function openProject(projectId) {
 function stopProjectVideo() {
   const video = document.getElementById('ph-video');
   if (!video) return;
+  musicWasPlayingBeforeVideo = false;
   video.src = 'about:blank';
 }
 
@@ -658,14 +747,30 @@ function fillProject() {
   const video = document.getElementById('ph-video');
   const videoFrame = video.closest('.video-frame');
   const videoSrc = p.vimeoId
-    ? `https://player.vimeo.com/video/${p.vimeoId}`
+    ? `https://player.vimeo.com/video/${p.vimeoId}?api=1`
     : p.youtubeId
-      ? `https://www.youtube.com/embed/${p.youtubeId}`
+      ? `https://www.youtube.com/embed/${p.youtubeId}?enablejsapi=1`
       : '';
   const videoWidth = Number(p.videoWidth) || 16;
   const videoHeight = Number(p.videoHeight) || 9;
   videoFrame.style.setProperty('--video-aspect-ratio', `${videoWidth} / ${videoHeight}`);
   videoFrame.dataset.videoOrientation = videoWidth < videoHeight ? 'portrait' : 'landscape';
+  video.onload = () => {
+    if (p.vimeoId) {
+      ['play', 'pause', 'finish'].forEach(eventName => {
+        video.contentWindow?.postMessage(JSON.stringify({
+          method: 'addEventListener',
+          value: eventName
+        }), 'https://player.vimeo.com');
+      });
+    } else if (p.youtubeId) {
+      video.contentWindow?.postMessage(JSON.stringify({
+        event: 'command',
+        func: 'addEventListener',
+        args: ['onStateChange']
+      }), 'https://www.youtube.com');
+    }
+  };
   video.src = videoSrc;
   video.title = `Vidéo du projet ${p.nom}`;
   videoWrap.style.display = videoSrc ? 'block' : 'none';

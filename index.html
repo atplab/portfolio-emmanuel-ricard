@@ -22,6 +22,25 @@
 </head>
 <body>
 
+<!-- ── Lecteur musical ─────────────────────────────────────────────────── -->
+<!-- La musique reste contrôlable manuellement et n'est pas lancée
+     automatiquement afin de respecter les règles des navigateurs. -->
+<aside id="music-player" aria-label="Lecteur de musique">
+  <audio id="page-music" src="./assets/page_music.mp3" preload="metadata" loop></audio>
+  <button id="music-toggle" type="button" aria-label="Lire la musique" aria-pressed="false">
+    <span class="music-toggle__icon" aria-hidden="true">▶</span>
+    <span class="music-toggle__label">Musique</span>
+  </button>
+  <a
+    class="music-source"
+    href="https://pixabay.com/music/lofi-lo-fi-background-music-loop-calm-study-462843/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Ouvrir la source de la musique sur Pixabay"
+    title="Source de la musique sur Pixabay"
+  >↗</a>
+</aside>
+
 <!-- ── Décor d'arrière-plan ───────────────────────────────────────────── -->
 <!-- Le décor reste indépendant du contenu et est généré en partie par main.js. -->
 <div id="stars"></div>
